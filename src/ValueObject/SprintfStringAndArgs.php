@@ -14,11 +14,11 @@ final class SprintfStringAndArgs
         /**
          * @readonly
          */
-        private String_ $string,
+        private readonly String_ $string,
         /**
          * @readonly
          */
-        private array $arrayItems
+        private readonly array $arrayItems
     )
     {
     }

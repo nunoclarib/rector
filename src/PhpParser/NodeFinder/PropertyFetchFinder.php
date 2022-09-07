@@ -27,27 +27,27 @@ final class PropertyFetchFinder
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver,
+        private readonly ReflectionResolver $reflectionResolver,
         /**
          * @readonly
          */
-        private AstResolver $astResolver,
+        private readonly AstResolver $astResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private PropertyFetchAnalyzer $propertyFetchAnalyzer
+        private readonly PropertyFetchAnalyzer $propertyFetchAnalyzer
     )
     {
     }

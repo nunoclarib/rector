@@ -13,7 +13,7 @@ final class InlineHTMLAnalyzer
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder
+        private readonly BetterNodeFinder $betterNodeFinder
     )
     {
     }

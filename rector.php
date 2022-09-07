@@ -16,6 +16,6 @@ return static function (RectorConfig $rectorConfig): void {
 
     //define sets of rules
        $rectorConfig->sets([
-           SetList::PHP_80
+           SetList::PHP_81
        ]);
 };

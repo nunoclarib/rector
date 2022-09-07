@@ -17,7 +17,7 @@ final class EmptyConfigurableRectorCollector
         /**
          * @readonly
          */
-        private ContainerBuilder $containerBuilder
+        private readonly ContainerBuilder $containerBuilder
     )
     {
     }

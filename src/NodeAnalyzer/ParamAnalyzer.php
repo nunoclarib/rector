@@ -30,27 +30,27 @@ final class ParamAnalyzer
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private ValueResolver $valueResolver,
+        private readonly ValueResolver $valueResolver,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private FuncCallManipulator $funcCallManipulator,
+        private readonly FuncCallManipulator $funcCallManipulator,
         /**
          * @readonly
          */
-        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        private readonly SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder
+        private readonly BetterNodeFinder $betterNodeFinder
     )
     {
     }

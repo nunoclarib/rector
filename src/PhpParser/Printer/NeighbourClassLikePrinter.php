@@ -23,15 +23,15 @@ final class NeighbourClassLikePrinter
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
+        private readonly \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
         /**
          * @readonly
          */
-        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector
+        private readonly RemovedAndAddedFilesCollector $removedAndAddedFilesCollector
     )
     {
     }

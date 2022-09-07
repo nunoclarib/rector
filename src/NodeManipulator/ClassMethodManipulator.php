@@ -23,19 +23,19 @@ final class ClassMethodManipulator
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver
+        private readonly ReflectionResolver $reflectionResolver
     )
     {
     }

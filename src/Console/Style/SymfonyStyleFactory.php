@@ -15,7 +15,7 @@ final class SymfonyStyleFactory
         /**
          * @readonly
          */
-        private PrivatesAccessor $privatesAccessor
+        private readonly PrivatesAccessor $privatesAccessor
     )
     {
     }

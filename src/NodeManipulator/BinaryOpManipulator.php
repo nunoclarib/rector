@@ -18,7 +18,7 @@ final class BinaryOpManipulator
         /**
          * @readonly
          */
-        private AssignAndBinaryMap $assignAndBinaryMap
+        private readonly AssignAndBinaryMap $assignAndBinaryMap
     )
     {
     }

@@ -18,19 +18,19 @@ final class ProcessResult
     public function __construct(/**
      * @readonly
      */
-    private array $systemErrors, /**
+    private readonly array $systemErrors, /**
      * @readonly
      */
-    private array $fileDiffs, /**
+    private readonly array $fileDiffs, /**
      * @readonly
      */
-    private int $addedFilesCount, /**
+    private readonly int $addedFilesCount, /**
      * @readonly
      */
-    private int $removedFilesCount, /**
+    private readonly int $removedFilesCount, /**
      * @readonly
      */
-    private int $removedNodeCount)
+    private readonly int $removedNodeCount)
     {
         Assert::allIsAOf($fileDiffs, FileDiff::class);
         Assert::allIsAOf($systemErrors, SystemError::class);

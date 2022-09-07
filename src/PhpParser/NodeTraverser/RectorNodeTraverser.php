@@ -20,11 +20,11 @@ final class RectorNodeTraverser extends NodeTraverser
         /**
          * @readonly
          */
-        private array $phpRectors,
+        private readonly array $phpRectors,
         /**
          * @readonly
          */
-        private PhpVersionedFilter $phpVersionedFilter
+        private readonly PhpVersionedFilter $phpVersionedFilter
     )
     {
     }

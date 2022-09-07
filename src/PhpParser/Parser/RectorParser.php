@@ -13,11 +13,11 @@ final class RectorParser
         /**
          * @readonly
          */
-        private Lexer $lexer,
+        private readonly Lexer $lexer,
         /**
          * @readonly
          */
-        private Parser $parser
+        private readonly Parser $parser
     )
     {
     }

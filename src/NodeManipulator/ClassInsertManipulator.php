@@ -24,11 +24,11 @@ final class ClassInsertManipulator
         /**
          * @readonly
          */
-        private NodeFactory $nodeFactory,
+        private readonly NodeFactory $nodeFactory,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver
+        private readonly NodeNameResolver $nodeNameResolver
     )
     {
     }

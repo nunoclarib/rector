@@ -21,7 +21,7 @@ final class ArrayManipulator
         /**
          * @readonly
          */
-        private RectorChangeCollector $rectorChangeCollector
+        private readonly RectorChangeCollector $rectorChangeCollector
     )
     {
     }

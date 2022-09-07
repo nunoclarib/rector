@@ -12,11 +12,11 @@ final class PhpFilesFinder
         /**
          * @readonly
          */
-        private \Rector\Core\FileSystem\FilesFinder $filesFinder,
+        private readonly \Rector\Core\FileSystem\FilesFinder $filesFinder,
         /**
          * @readonly
          */
-        private UnchangedFilesFilter $unchangedFilesFilter
+        private readonly UnchangedFilesFilter $unchangedFilesFilter
     )
     {
     }

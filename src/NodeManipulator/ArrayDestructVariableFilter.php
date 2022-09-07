@@ -17,11 +17,11 @@ final class ArrayDestructVariableFilter
         /**
          * @readonly
          */
-        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        private readonly SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver
+        private readonly NodeNameResolver $nodeNameResolver
     )
     {
     }

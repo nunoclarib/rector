@@ -29,7 +29,7 @@ final class ExclusionManager
         /**
          * @readonly
          */
-        private PhpDocInfoFactory $phpDocInfoFactory
+        private readonly PhpDocInfoFactory $phpDocInfoFactory
     )
     {
     }

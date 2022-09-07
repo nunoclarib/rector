@@ -27,34 +27,34 @@ final class ProcessCommand extends \Rector\Core\Console\Command\AbstractProcessC
     public function __construct(/**
      * @readonly
      */
-    private AdditionalAutoloader $additionalAutoloader, /**
+    private readonly AdditionalAutoloader $additionalAutoloader, /**
      * @readonly
      */
-    private ChangedFilesDetector $changedFilesDetector, /**
+    private readonly ChangedFilesDetector $changedFilesDetector, /**
      * @readonly
      */
-    private MissingRectorRulesReporter $missingRectorRulesReporter, /**
+    private readonly MissingRectorRulesReporter $missingRectorRulesReporter, /**
      * @readonly
      */
-    private ApplicationFileProcessor $applicationFileProcessor, /**
+    private readonly ApplicationFileProcessor $applicationFileProcessor, /**
      * @readonly
      */
-    private ProcessResultFactory $processResultFactory, /**
+    private readonly ProcessResultFactory $processResultFactory, /**
      * @readonly
      */
-    private DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator, /**
+    private readonly DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator, /**
      * @readonly
      */
-    private EmptyConfigurableRectorChecker $emptyConfigurableRectorChecker, /**
+    private readonly EmptyConfigurableRectorChecker $emptyConfigurableRectorChecker, /**
      * @readonly
      */
-    private OutputFormatterCollector $outputFormatterCollector, /**
+    private readonly OutputFormatterCollector $outputFormatterCollector, /**
      * @readonly
      */
-    private OutputStyleInterface $rectorOutputStyle, /**
+    private readonly OutputStyleInterface $rectorOutputStyle, /**
      * @readonly
      */
-    private MemoryLimiter $memoryLimiter)
+    private readonly MemoryLimiter $memoryLimiter)
     {
         parent::__construct();
     }

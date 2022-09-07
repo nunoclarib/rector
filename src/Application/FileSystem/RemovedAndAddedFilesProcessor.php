@@ -17,23 +17,23 @@ final class RemovedAndAddedFilesProcessor
         /**
          * @readonly
          */
-        private Filesystem $filesystem,
+        private readonly Filesystem $filesystem,
         /**
          * @readonly
          */
-        private NodesWithFileDestinationPrinter $nodesWithFileDestinationPrinter,
+        private readonly NodesWithFileDestinationPrinter $nodesWithFileDestinationPrinter,
         /**
          * @readonly
          */
-        private \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        private readonly \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle,
+        private readonly OutputStyleInterface $rectorOutputStyle,
         /**
          * @readonly
          */
-        private FilePathHelper $filePathHelper
+        private readonly FilePathHelper $filePathHelper
     )
     {
     }

@@ -13,7 +13,7 @@ final class BinaryOpAnalyzer
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver
+        private readonly NodeNameResolver $nodeNameResolver
     )
     {
     }

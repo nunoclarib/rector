@@ -49,15 +49,15 @@ final class InlineCodeParser
         /**
          * @readonly
          */
-        private NodePrinterInterface $nodePrinter,
+        private readonly NodePrinterInterface $nodePrinter,
         /**
          * @readonly
          */
-        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        private readonly NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\Parser\SimplePhpParser $simplePhpParser
+        private readonly \Rector\Core\PhpParser\Parser\SimplePhpParser $simplePhpParser
     )
     {
     }

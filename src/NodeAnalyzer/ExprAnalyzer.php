@@ -26,23 +26,23 @@ final class ExprAnalyzer
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private PhpDocInfoFactory $phpDocInfoFactory,
+        private readonly PhpDocInfoFactory $phpDocInfoFactory,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private ArrayManipulator $arrayManipulator
+        private readonly ArrayManipulator $arrayManipulator
     )
     {
     }

@@ -17,7 +17,7 @@ final class BootstrapFilesIncluder
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider
+        private readonly ParameterProvider $parameterProvider
     )
     {
     }

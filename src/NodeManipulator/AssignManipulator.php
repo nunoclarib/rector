@@ -34,23 +34,23 @@ final class AssignManipulator
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private PropertyFetchAnalyzer $propertyFetchAnalyzer,
+        private readonly PropertyFetchAnalyzer $propertyFetchAnalyzer,
         /**
          * @readonly
          */
-        private MultiInstanceofChecker $multiInstanceofChecker
+        private readonly MultiInstanceofChecker $multiInstanceofChecker
     )
     {
     }

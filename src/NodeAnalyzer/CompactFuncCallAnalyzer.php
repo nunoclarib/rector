@@ -17,7 +17,7 @@ final class CompactFuncCallAnalyzer
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver
+        private readonly NodeNameResolver $nodeNameResolver
     )
     {
     }

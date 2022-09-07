@@ -39,27 +39,27 @@ final class ValueResolver
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private ConstFetchAnalyzer $constFetchAnalyzer,
+        private readonly ConstFetchAnalyzer $constFetchAnalyzer,
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private CurrentFileProvider $currentFileProvider,
+        private readonly CurrentFileProvider $currentFileProvider,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder
+        private readonly BetterNodeFinder $betterNodeFinder
     )
     {
     }

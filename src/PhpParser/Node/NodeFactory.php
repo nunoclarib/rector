@@ -64,23 +64,23 @@ final class NodeFactory
         /**
          * @readonly
          */
-        private BuilderFactory $builderFactory,
+        private readonly BuilderFactory $builderFactory,
         /**
          * @readonly
          */
-        private PhpDocInfoFactory $phpDocInfoFactory,
+        private readonly PhpDocInfoFactory $phpDocInfoFactory,
         /**
          * @readonly
          */
-        private StaticTypeMapper $staticTypeMapper,
+        private readonly StaticTypeMapper $staticTypeMapper,
         /**
          * @readonly
          */
-        private CurrentNodeProvider $currentNodeProvider,
+        private readonly CurrentNodeProvider $currentNodeProvider,
         /**
          * @readonly
          */
-        private PropertyTypeDecorator $propertyTypeDecorator
+        private readonly PropertyTypeDecorator $propertyTypeDecorator
     )
     {
     }

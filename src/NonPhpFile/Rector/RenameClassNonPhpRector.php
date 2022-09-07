@@ -34,7 +34,7 @@ final class RenameClassNonPhpRector implements NonPhpRectorInterface, Configurab
         /**
          * @readonly
          */
-        private RenamedClassesDataCollector $renamedClassesDataCollector
+        private readonly RenamedClassesDataCollector $renamedClassesDataCollector
     )
     {
     }

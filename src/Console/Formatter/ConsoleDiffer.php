@@ -10,11 +10,11 @@ final class ConsoleDiffer
         /**
          * @readonly
          */
-        private Differ $differ,
+        private readonly Differ $differ,
         /**
          * @readonly
          */
-        private \Rector\Core\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter
+        private readonly \Rector\Core\Console\Formatter\ColorConsoleDiffFormatter $colorConsoleDiffFormatter
     )
     {
     }

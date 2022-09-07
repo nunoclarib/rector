@@ -12,11 +12,11 @@ final class EmptyConfigurableRectorChecker
         /**
          * @readonly
          */
-        private EmptyConfigurableRectorCollector $emptyConfigurableRectorCollector,
+        private readonly EmptyConfigurableRectorCollector $emptyConfigurableRectorCollector,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle
+        private readonly OutputStyleInterface $rectorOutputStyle
     )
     {
     }

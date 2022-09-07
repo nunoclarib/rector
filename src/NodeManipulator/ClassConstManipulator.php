@@ -18,15 +18,15 @@ final class ClassConstManipulator
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private AstResolver $astResolver
+        private readonly AstResolver $astResolver
     )
     {
     }

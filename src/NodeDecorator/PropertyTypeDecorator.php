@@ -18,19 +18,19 @@ final class PropertyTypeDecorator
         /**
          * @readonly
          */
-        private PhpDocInfoFactory $phpDocInfoFactory,
+        private readonly PhpDocInfoFactory $phpDocInfoFactory,
         /**
          * @readonly
          */
-        private PhpVersionProvider $phpVersionProvider,
+        private readonly PhpVersionProvider $phpVersionProvider,
         /**
          * @readonly
          */
-        private StaticTypeMapper $staticTypeMapper,
+        private readonly StaticTypeMapper $staticTypeMapper,
         /**
          * @readonly
          */
-        private PhpDocTypeChanger $phpDocTypeChanger
+        private readonly PhpDocTypeChanger $phpDocTypeChanger
     )
     {
     }

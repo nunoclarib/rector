@@ -17,134 +17,134 @@ use Campus\Lib\Logger\Registry;
 
 abstract class Node extends Neo4j\Node
 {
-	const PROPERTY_ID = 'id';
-	const PROPERTY_URL = 'url';
-	const PROPERTY_IMAGE = 'image';
-	const PROPERTY_CONTENT = 'content';
-	const PROPERTY_SUMMARY = 'summary';
-	const PROPERTY_ATTACHMENTS = 'attachments';
-	const PROPERTY_VERB = 'verb';
-	const PROPERTY_PRIVACY = 'privacy';
-	const PROPERTY_HEIGHT = 'height';
-	const PROPERTY_WIDTH = 'width';
-	const PROPERTY_CATEGORY = 'category';
+	final const PROPERTY_ID = 'id';
+	final const PROPERTY_URL = 'url';
+	final const PROPERTY_IMAGE = 'image';
+	final const PROPERTY_CONTENT = 'content';
+	final const PROPERTY_SUMMARY = 'summary';
+	final const PROPERTY_ATTACHMENTS = 'attachments';
+	final const PROPERTY_VERB = 'verb';
+	final const PROPERTY_PRIVACY = 'privacy';
+	final const PROPERTY_HEIGHT = 'height';
+	final const PROPERTY_WIDTH = 'width';
+	final const PROPERTY_CATEGORY = 'category';
 
-	const PROPERTY_ACTIVE = 'active';
-	const PROPERTY_INACTIVE = 'inactive';
+	final const PROPERTY_ACTIVE = 'active';
+	final const PROPERTY_INACTIVE = 'inactive';
 
-	const PROPERTY_HIGHLIGHTED = 'highlighted';
-	const PROPERTY_ROOT = 'root';
+	final const PROPERTY_HIGHLIGHTED = 'highlighted';
+	final const PROPERTY_ROOT = 'root';
 
-	const PROPERTY_INVALID = 'invalid';
-	const PROPERTY_VERSION = 'version';
-	const PROPERTY_REACTION_TYPE = 'type';
+	final const PROPERTY_INVALID = 'invalid';
+	final const PROPERTY_VERSION = 'version';
+	final const PROPERTY_REACTION_TYPE = 'type';
 
-
-	/**
-	 * Published property name.
-	 * Value will be the node creation unix timestamp.
-	 */
-	const PROPERTY_OBJECT_TYPE = 'objectType';
 
 	/**
 	 * Published property name.
 	 * Value will be the node creation unix timestamp.
 	 */
-	const PROPERTY_PUBLISHED = 'published';
+	final const PROPERTY_OBJECT_TYPE = 'objectType';
+
+	/**
+	 * Published property name.
+	 * Value will be the node creation unix timestamp.
+	 */
+	final const PROPERTY_PUBLISHED = 'published';
 
 	/**
 	 * DisplayName property name
 	 * Value will be the node display name.
 	 */
-	const PROPERTY_DISPLAY_NAME = 'displayName';
+	final const PROPERTY_DISPLAY_NAME = 'displayName';
 
 	/**
 	 * Normalized prefix
 	 */
-	const PROPERTY_PREFIX_NORMALIZED = 'normalized_';
+	final const PROPERTY_PREFIX_NORMALIZED = 'normalized_';
 
 	/**
 	 * Updated property name.
 	 * Value will be the node last update unix timestamp.
 	 */
-	const PROPERTY_UPDATED = 'updated';
+	final const PROPERTY_UPDATED = 'updated';
 
-	const PROPERTY_TIMES = 'times';
+	final const PROPERTY_TIMES = 'times';
 
-	const PROPERTY_SEEN = 'seen';
+	final const PROPERTY_SEEN = 'seen';
 	/**
 	 * Order the result by date from most recent to older
 	 */
-	const ORDER_DATE = 'date';
+	final const ORDER_DATE = 'date';
 
 	/**
 	 * Order the result by date from older to most recent
 	 */
-	const ORDER_DATE_REVERSE = 'date-reverse';
+	final const ORDER_DATE_REVERSE = 'date-reverse';
 
 	/**
 	 * Order the result alphabetically from A to Z
 	 */
-	const ORDER_ALPHABETICAL = 'alphabetical';
+	final const ORDER_ALPHABETICAL = 'alphabetical';
 
 	/**
 	 * Order the result alphabetically from Z to A
 	 */
-	const ORDER_ALPHABETICAL_REVERSE = 'alphabetical-reverse';
+	final const ORDER_ALPHABETICAL_REVERSE = 'alphabetical-reverse';
 
 	/**
 	 * Paginate by an offset amount
 	 */
-	const PAGINATION_OFFSET = 'offset';
+	final const PAGINATION_OFFSET = 'offset';
 
 	/**
 	 * Paginate by a specific ID (get activity before it)
 	 */
-	const PAGINATION_BEFORE_ID = 'before-id';
+	final const PAGINATION_BEFORE_ID = 'before-id';
 
 	/**
 	 * Paginate by a specific ID (get activity after it)
 	 */
-	const PAGINATION_AFTER_ID = 'after-id';
+	final const PAGINATION_AFTER_ID = 'after-id';
 
 	/**
 	 * Paginate by a published date (get activity before it)
 	 */
-	const PAGINATION_BEFORE_PUBLISHED = 'before-published';
+	final const PAGINATION_BEFORE_PUBLISHED = 'before-published';
 
 	/**
 	 * Paginate by a published date (get activity after it)
 	 */
-	const PAGINATION_AFTER_PUBLISHED = 'after-published';
+	final const PAGINATION_AFTER_PUBLISHED = 'after-published';
 
 	/**
 	 * Paginate by an updated date (get activity before it)
 	 */
-	const PAGINATION_BEFORE_UPDATED = 'before-updated';
+	final const PAGINATION_BEFORE_UPDATED = 'before-updated';
 
 	/**
 	 * Paginate by an updated date (get activity after it)
 	 */
-	const PAGINATION_AFTER_UPDATED = 'after-updated';
+	final const PAGINATION_AFTER_UPDATED = 'after-updated';
 
-	const CONTEXT_ORGANIZATION = 'organization';
-	const CONTEXT_GROUP = 'group';
-	const CONTEXT_PERSON = 'person';
-	const CONTEXT_PLATFORM = 'platform';
-	const CONTEXT_HUB = 'hub';
-	const CONTEXT_DISCUSSION = 'discussion';
+	final const CONTEXT_ORGANIZATION = 'organization';
+	final const CONTEXT_GROUP = 'group';
+	final const CONTEXT_PERSON = 'person';
+	final const CONTEXT_PLATFORM = 'platform';
+	final const CONTEXT_HUB = 'hub';
+	final const CONTEXT_DISCUSSION = 'discussion';
 
-	const OBJECT_TYPE_SELF = 'self';
-	const OBJECT_TYPE_ORGANIZATION = 'organization';
-	const OBJECT_TYPE_GROUP = 'group';
-	const OBJECT_TYPE_HUB = 'hub';
-	const OBJECT_TYPE_QUESTION = 'question';
-	const OBJECT_TYPE_SERVICE = 'service';
-	const OBJECT_TYPE_PERSON = 'person';
-	const OBJECT_TYPE_CONTENT = 'content';
-	const OBJECT_TYPE_FOLDER = 'folder';
-	const OBJECT_TYPE_EVENT = 'event';
-	const OBJECT_TYPE_DISCUSSION = 'discussion';
+	final const OBJECT_TYPE_SELF = 'self';
+	final const OBJECT_TYPE_ORGANIZATION = 'organization';
+	final const OBJECT_TYPE_GROUP = 'group';
+	final const OBJECT_TYPE_HUB = 'hub';
+	final const OBJECT_TYPE_QUESTION = 'question';
+	final const OBJECT_TYPE_SERVICE = 'service';
+	final const OBJECT_TYPE_PERSON = 'person';
+	final const OBJECT_TYPE_CONTENT = 'content';
+	final const OBJECT_TYPE_FOLDER = 'folder';
+	final const OBJECT_TYPE_EVENT = 'event';
+	final const OBJECT_TYPE_DISCUSSION = 'discussion';
 
 	public static $objectType;
 	public static $dataQuery;
@@ -272,7 +272,7 @@ abstract class Node extends Neo4j\Node
 		$labels[] = Client::getLabelInstance($objectTypeLabel);
 
 		if (isset($properties[iPrivacy::PROPERTY_PRIVACY])) {
-			$privacyLabel = strtoupper($properties[iPrivacy::PROPERTY_PRIVACY]);
+			$privacyLabel = strtoupper((string) $properties[iPrivacy::PROPERTY_PRIVACY]);
 			$labels[] = Client::getLabelInstance($privacyLabel);
 		}
 
@@ -310,7 +310,7 @@ abstract class Node extends Neo4j\Node
 			$publicLabel = Client::getLabelInstance('PUBLIC');
 			$this->removeLabels(array($privateLabel, $publicLabel));
 
-			$privacyLabel = Client::getLabelInstance(strtoupper($properties[iPrivacy::PROPERTY_PRIVACY]));
+			$privacyLabel = Client::getLabelInstance(strtoupper((string) $properties[iPrivacy::PROPERTY_PRIVACY]));
 			$this->addLabels(array($privacyLabel));
 		}
 
@@ -322,7 +322,7 @@ abstract class Node extends Neo4j\Node
 		}
 
 		foreach ($properties as $key => &$value) {
-			if (stripos($key, 'url') !== false) $value = Url::prepareForStorage($value);
+			if (stripos((string) $key, 'url') !== false) $value = Url::prepareForStorage($value);
 		}
 
 		$this->setProperties($properties);
@@ -384,7 +384,7 @@ abstract class Node extends Neo4j\Node
 			$object->author = $this->authorNode->returnAsActivityStreamsObject($dehydrated, $actorNode, $withComments);
 		}
 
-		if ($this instanceof Node\Person && isset($object->summary) && strlen($object->summary) > 200) {
+		if ($this instanceof Node\Person && isset($object->summary) && strlen((string) $object->summary) > 200) {
 			$object->summary = StringUtils::truncate(@$object->summary, 200, '(...)');
 		}
 
@@ -1192,11 +1192,11 @@ abstract class Node extends Neo4j\Node
 		}
 
 		if (!empty($whereString)) {
-			$whereString = is_bool(strpos($searchQuery, 'WHERE'))
+			$whereString = is_bool(strpos((string) $searchQuery, 'WHERE'))
 				? "WHERE " . $whereString
 				: "AND " . $whereString;
 
-			$searchQuery = explode('RETURN', $searchQuery);
+			$searchQuery = explode('RETURN', (string) $searchQuery);
 			$searchQuery = "{$searchQuery[0]} {$whereString} RETURN {$searchQuery[1]}";
 		}
 
@@ -1246,11 +1246,11 @@ abstract class Node extends Neo4j\Node
 		}
 
 		if (!empty($whereString)) {
-			$whereString = is_bool(strpos($searchQuery, 'WHERE'))
+			$whereString = is_bool(strpos((string) $searchQuery, 'WHERE'))
 				? "WHERE " . $whereString
 				: "AND " . $whereString;
 
-			$searchQuery = explode('RETURN', $searchQuery);
+			$searchQuery = explode('RETURN', (string) $searchQuery);
 			$searchQuery = "{$searchQuery[0]} {$whereString} RETURN {$searchQuery[1]}";
 		}
 
@@ -1474,7 +1474,7 @@ abstract class Node extends Neo4j\Node
 		if (!empty($properties['objectType'])) {
 			if ($properties['objectType'] === 'dummy') $properties['objectType'] = 'note';
 
-			$objectClassName = explode('-', $properties['objectType']);
+			$objectClassName = explode('-', (string) $properties['objectType']);
 			$objectClassName = array_map('ucwords', $objectClassName);
 			$objectClassName = implode('', $objectClassName);
 			$objectClassName = '\\Campus\\ActivityStreams\\Object\\' . $objectClassName;
@@ -1534,7 +1534,7 @@ abstract class Node extends Neo4j\Node
 		if (!empty($properties['objectType'])) {
 			if ($properties['objectType'] === 'dummy') $properties['objectType'] = 'note';
 
-			$objectClassName = explode('-', $properties['objectType']);
+			$objectClassName = explode('-', (string) $properties['objectType']);
 			$objectClassName = array_map('ucwords', $objectClassName);
 			$objectClassName = implode('', $objectClassName);
 			$objectClassName = '\\Campus\\ActivityStreams\\Object\\' . $objectClassName;
@@ -1719,7 +1719,7 @@ abstract class Node extends Neo4j\Node
 	 */
 	public static function getTimeStamp($date, $dateFormat)
 	{
-		$date = str_replace("~", " ", $date);
+		$date = str_replace("~", " ", (string) $date);
 		switch ($dateFormat) {
 			case "y-m-d~h:m:s":
 				$date = new Datetime($date);

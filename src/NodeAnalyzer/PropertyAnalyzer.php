@@ -16,7 +16,7 @@ final class PropertyAnalyzer
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver
+        private readonly NodeTypeResolver $nodeTypeResolver
     )
     {
     }

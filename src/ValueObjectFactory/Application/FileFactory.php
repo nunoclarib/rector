@@ -21,15 +21,15 @@ final class FileFactory
         /**
          * @readonly
          */
-        private FilesFinder $filesFinder,
+        private readonly FilesFinder $filesFinder,
         /**
          * @readonly
          */
-        private ChangedFilesDetector $changedFilesDetector,
+        private readonly ChangedFilesDetector $changedFilesDetector,
         /**
          * @readonly
          */
-        private array $fileProcessors
+        private readonly array $fileProcessors
     )
     {
     }

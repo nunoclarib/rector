@@ -11,7 +11,7 @@ final class FileDiffFileDecorator
         /**
          * @readonly
          */
-        private FileDiffFactory $fileDiffFactory
+        private readonly FileDiffFactory $fileDiffFactory
     )
     {
     }

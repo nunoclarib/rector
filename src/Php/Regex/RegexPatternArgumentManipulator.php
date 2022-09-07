@@ -35,23 +35,23 @@ final class RegexPatternArgumentManipulator
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private LocalConstantFinder $localConstantFinder,
+        private readonly LocalConstantFinder $localConstantFinder,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator
+        private readonly NodeComparator $nodeComparator
     )
     {
     }

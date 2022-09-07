@@ -63,63 +63,63 @@ final class PropertyManipulator
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\AssignManipulator $assignManipulator,
+        private readonly \Rector\Core\NodeManipulator\AssignManipulator $assignManipulator,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private VariableToConstantGuard $variableToConstantGuard,
+        private readonly VariableToConstantGuard $variableToConstantGuard,
         /**
          * @readonly
          */
-        private ReadWritePropertyAnalyzer $readWritePropertyAnalyzer,
+        private readonly ReadWritePropertyAnalyzer $readWritePropertyAnalyzer,
         /**
          * @readonly
          */
-        private PhpDocInfoFactory $phpDocInfoFactory,
+        private readonly PhpDocInfoFactory $phpDocInfoFactory,
         /**
          * @readonly
          */
-        private PropertyFetchFinder $propertyFetchFinder,
+        private readonly PropertyFetchFinder $propertyFetchFinder,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver,
+        private readonly ReflectionResolver $reflectionResolver,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private PhpAttributeAnalyzer $phpAttributeAnalyzer,
+        private readonly PhpAttributeAnalyzer $phpAttributeAnalyzer,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private PromotedPropertyResolver $promotedPropertyResolver,
+        private readonly PromotedPropertyResolver $promotedPropertyResolver,
         /**
          * @readonly
          */
-        private ConstructorAssignDetector $constructorAssignDetector,
+        private readonly ConstructorAssignDetector $constructorAssignDetector,
         /**
          * @readonly
          */
-        private AstResolver $astResolver,
+        private readonly AstResolver $astResolver,
         /**
          * @readonly
          */
-        private PropertyFetchAnalyzer $propertyFetchAnalyzer,
+        private readonly PropertyFetchAnalyzer $propertyFetchAnalyzer,
         /**
          * @readonly
          */
-        private MultiInstanceofChecker $multiInstanceofChecker
+        private readonly MultiInstanceofChecker $multiInstanceofChecker
     )
     {
     }

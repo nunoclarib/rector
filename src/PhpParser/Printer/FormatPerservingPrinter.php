@@ -18,11 +18,11 @@ final class FormatPerservingPrinter
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
+        private readonly \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
         /**
          * @readonly
          */
-        private Filesystem $filesystem
+        private readonly Filesystem $filesystem
     )
     {
     }

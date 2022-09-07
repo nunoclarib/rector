@@ -26,27 +26,27 @@ final class IfManipulator
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\StmtsManipulator $stmtsManipulator,
+        private readonly \Rector\Core\NodeManipulator\StmtsManipulator $stmtsManipulator,
         /**
          * @readonly
          */
-        private ValueResolver $valueResolver,
+        private readonly ValueResolver $valueResolver,
         /**
          * @readonly
          */
-        private ConditionInverter $conditionInverter,
+        private readonly ConditionInverter $conditionInverter,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator
+        private readonly NodeComparator $nodeComparator
     )
     {
     }

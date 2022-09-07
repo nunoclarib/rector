@@ -15,7 +15,7 @@ final class RectorOutputStyle implements OutputStyleInterface
         /**
          * @readonly
          */
-        private RectorConsoleOutputStyle $rectorConsoleOutputStyle
+        private readonly RectorConsoleOutputStyle $rectorConsoleOutputStyle
     )
     {
     }

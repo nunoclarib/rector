@@ -25,7 +25,7 @@ final class ConstantArrayTypeToCallReflectionResolver implements TypeToCallRefle
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider
+        private readonly ReflectionProvider $reflectionProvider
     )
     {
     }

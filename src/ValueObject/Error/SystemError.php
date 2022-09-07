@@ -11,19 +11,19 @@ final class SystemError implements SerializableInterface
         /**
          * @readonly
          */
-        private string $message,
+        private readonly string $message,
         /**
          * @readonly
          */
-        private ?string $relativeFilePath = null,
+        private readonly ?string $relativeFilePath = null,
         /**
          * @readonly
          */
-        private ?int $line = null,
+        private readonly ?int $line = null,
         /**
          * @readonly
          */
-        private ?string $rectorClass = null
+        private readonly ?string $rectorClass = null
     )
     {
     }

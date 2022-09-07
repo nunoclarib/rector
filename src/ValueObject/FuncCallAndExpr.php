@@ -11,11 +11,11 @@ final class FuncCallAndExpr
         /**
          * @readonly
          */
-        private FuncCall $funcCall,
+        private readonly FuncCall $funcCall,
         /**
          * @readonly
          */
-        private Expr $expr
+        private readonly Expr $expr
     )
     {
     }

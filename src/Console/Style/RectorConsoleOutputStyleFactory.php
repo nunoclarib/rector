@@ -14,7 +14,7 @@ final class RectorConsoleOutputStyleFactory
         /**
          * @readonly
          */
-        private PrivatesAccessor $privatesAccessor
+        private readonly PrivatesAccessor $privatesAccessor
     )
     {
     }

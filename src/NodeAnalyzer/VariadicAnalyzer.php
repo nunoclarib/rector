@@ -20,19 +20,19 @@ final class VariadicAnalyzer
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private AstResolver $astResolver,
+        private readonly AstResolver $astResolver,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver
+        private readonly ReflectionResolver $reflectionResolver
     )
     {
     }

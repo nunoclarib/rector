@@ -37,35 +37,35 @@ final class ClassMethodAssignManipulator
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeFactory $nodeFactory,
+        private readonly NodeFactory $nodeFactory,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator,
+        private readonly \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver,
+        private readonly ReflectionResolver $reflectionResolver,
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\ArrayDestructVariableFilter $arrayDestructVariableFilter,
+        private readonly \Rector\Core\NodeManipulator\ArrayDestructVariableFilter $arrayDestructVariableFilter,
         /**
          * @readonly
          */
-        private ExprUsedInNextNodeAnalyzer $exprUsedInNextNodeAnalyzer
+        private readonly ExprUsedInNextNodeAnalyzer $exprUsedInNextNodeAnalyzer
     )
     {
     }

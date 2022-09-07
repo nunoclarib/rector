@@ -26,10 +26,10 @@ final class WorkerCommand extends \Rector\Core\Console\Command\AbstractProcessCo
     public function __construct(/**
      * @readonly
      */
-    private WorkerRunner $workerRunner, /**
+    private readonly WorkerRunner $workerRunner, /**
      * @readonly
      */
-    private MemoryLimiter $memoryLimiter)
+    private readonly MemoryLimiter $memoryLimiter)
     {
         parent::__construct();
     }

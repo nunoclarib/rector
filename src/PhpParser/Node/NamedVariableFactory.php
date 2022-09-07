@@ -14,11 +14,11 @@ final class NamedVariableFactory
         /**
          * @readonly
          */
-        private VariableNaming $variableNaming,
+        private readonly VariableNaming $variableNaming,
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder
+        private readonly \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder
     )
     {
     }

@@ -31,7 +31,7 @@ final class CallAnalyzer
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator
+        private readonly NodeComparator $nodeComparator
     )
     {
     }

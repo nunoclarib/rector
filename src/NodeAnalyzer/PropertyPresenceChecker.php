@@ -23,19 +23,19 @@ final class PropertyPresenceChecker
         /**
          * @readonly
          */
-        private PromotedPropertyResolver $promotedPropertyResolver,
+        private readonly PromotedPropertyResolver $promotedPropertyResolver,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private AstResolver $astResolver
+        private readonly AstResolver $astResolver
     )
     {
     }

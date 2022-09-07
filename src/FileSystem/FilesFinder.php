@@ -18,19 +18,19 @@ final class FilesFinder
         /**
          * @readonly
          */
-        private \Rector\Core\FileSystem\FilesystemTweaker $filesystemTweaker,
+        private readonly \Rector\Core\FileSystem\FilesystemTweaker $filesystemTweaker,
         /**
          * @readonly
          */
-        private SkippedPathsResolver $skippedPathsResolver,
+        private readonly SkippedPathsResolver $skippedPathsResolver,
         /**
          * @readonly
          */
-        private UnchangedFilesFilter $unchangedFilesFilter,
+        private readonly UnchangedFilesFilter $unchangedFilesFilter,
         /**
          * @readonly
          */
-        private \Rector\Core\FileSystem\FileAndDirectoryFilter $fileAndDirectoryFilter
+        private readonly \Rector\Core\FileSystem\FileAndDirectoryFilter $fileAndDirectoryFilter
     )
     {
     }

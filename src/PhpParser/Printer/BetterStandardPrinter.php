@@ -76,10 +76,10 @@ final class BetterStandardPrinter extends Standard implements NodePrinterInterfa
     public function __construct(/**
      * @readonly
      */
-    private DocBlockUpdater $docBlockUpdater, /**
+    private readonly DocBlockUpdater $docBlockUpdater, /**
      * @readonly
      */
-    private RectorConfigProvider $rectorConfigProvider, array $options = [])
+    private readonly RectorConfigProvider $rectorConfigProvider, array $options = [])
     {
         parent::__construct($options);
         // print return type double colon right after the bracket "function(): string"

@@ -14,11 +14,11 @@ final class StmtsAndTokens
         /**
          * @readonly
          */
-        private array $stmts,
+        private readonly array $stmts,
         /**
          * @readonly
          */
-        private array $tokens
+        private readonly array $tokens
     )
     {
     }

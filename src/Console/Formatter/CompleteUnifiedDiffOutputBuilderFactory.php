@@ -15,7 +15,7 @@ final class CompleteUnifiedDiffOutputBuilderFactory
         /**
          * @readonly
          */
-        private PrivatesAccessor $privatesAccessor
+        private readonly PrivatesAccessor $privatesAccessor
     )
     {
     }

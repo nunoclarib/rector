@@ -13,7 +13,7 @@ final class ContainerBuilderFactory
         /**
          * @readonly
          */
-        private ConfigureCallMergingLoaderFactory $configureCallMergingLoaderFactory
+        private readonly ConfigureCallMergingLoaderFactory $configureCallMergingLoaderFactory
     )
     {
     }

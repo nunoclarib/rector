@@ -26,16 +26,16 @@ final class FileDiff implements SerializableInterface
     public function __construct(/**
      * @readonly
      */
-    private string $relativeFilePath, /**
+    private readonly string $relativeFilePath, /**
      * @readonly
      */
-    private string $diff, /**
+    private readonly string $diff, /**
      * @readonly
      */
-    private string $diffConsoleFormatted, /**
+    private readonly string $diffConsoleFormatted, /**
      * @readonly
      */
-    private array $rectorsWithLineChanges = [])
+    private readonly array $rectorsWithLineChanges = [])
     {
         Assert::allIsAOf($rectorsWithLineChanges, RectorWithLineChange::class);
     }

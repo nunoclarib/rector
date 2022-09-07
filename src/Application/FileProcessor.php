@@ -16,23 +16,23 @@ final class FileProcessor
         /**
          * @readonly
          */
-        private AffectedFilesCollector $affectedFilesCollector,
+        private readonly AffectedFilesCollector $affectedFilesCollector,
         /**
          * @readonly
          */
-        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        private readonly NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
         /**
          * @readonly
          */
-        private RectorParser $rectorParser,
+        private readonly RectorParser $rectorParser,
         /**
          * @readonly
          */
-        private RectorNodeTraverser $rectorNodeTraverser,
+        private readonly RectorNodeTraverser $rectorNodeTraverser,
         /**
          * @readonly
          */
-        private FileWithoutNamespaceNodeTraverser $fileWithoutNamespaceNodeTraverser
+        private readonly FileWithoutNamespaceNodeTraverser $fileWithoutNamespaceNodeTraverser
     )
     {
     }

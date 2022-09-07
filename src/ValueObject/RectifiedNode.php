@@ -14,11 +14,11 @@ final class RectifiedNode
         /**
          * @readonly
          */
-        private string $rectorClass,
+        private readonly string $rectorClass,
         /**
          * @readonly
          */
-        private Node $node
+        private readonly Node $node
     )
     {
     }

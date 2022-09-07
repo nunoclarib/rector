@@ -14,11 +14,11 @@ final class ConfigurationFactory
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider,
+        private readonly ParameterProvider $parameterProvider,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle
+        private readonly OutputStyleInterface $rectorOutputStyle
     )
     {
     }

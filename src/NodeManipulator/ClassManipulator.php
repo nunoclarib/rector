@@ -15,15 +15,15 @@ final class ClassManipulator
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private ClassChildAnalyzer $classChildAnalyzer
+        private readonly ClassChildAnalyzer $classChildAnalyzer
     )
     {
     }

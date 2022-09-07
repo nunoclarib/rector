@@ -29,7 +29,7 @@ final class FilePathHelper
         /**
          * @readonly
          */
-        private Filesystem $filesystem
+        private readonly Filesystem $filesystem
     )
     {
     }

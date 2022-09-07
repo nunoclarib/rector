@@ -44,7 +44,7 @@ final class File
     public function __construct(/**
      * @readonly
      */
-    private string $filepath, private string $fileContent)
+    private readonly string $filepath, private string $fileContent)
     {
         $this->originalFileContent = $fileContent;
     }

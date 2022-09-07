@@ -24,31 +24,31 @@ final class DependencyClassMethodDecorator
         /**
          * @readonly
          */
-        private NodeFactory $nodeFactory,
+        private readonly NodeFactory $nodeFactory,
         /**
          * @readonly
          */
-        private PromotedPropertyParamCleaner $promotedPropertyParamCleaner,
+        private readonly PromotedPropertyParamCleaner $promotedPropertyParamCleaner,
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private AstResolver $astResolver,
+        private readonly AstResolver $astResolver,
         /**
          * @readonly
          */
-        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        private readonly SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver
+        private readonly NodeTypeResolver $nodeTypeResolver
     )
     {
     }

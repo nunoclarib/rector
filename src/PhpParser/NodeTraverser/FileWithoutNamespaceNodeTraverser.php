@@ -15,7 +15,7 @@ final class FileWithoutNamespaceNodeTraverser extends NodeTraverser
         /**
          * @readonly
          */
-        private NodeFinder $nodeFinder
+        private readonly NodeFinder $nodeFinder
     )
     {
     }

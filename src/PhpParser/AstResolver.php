@@ -58,35 +58,35 @@ final class AstResolver
         /**
          * @readonly
          */
-        private SmartPhpParser $smartPhpParser,
+        private readonly SmartPhpParser $smartPhpParser,
         /**
          * @readonly
          */
-        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        private readonly NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver,
+        private readonly ReflectionResolver $reflectionResolver,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\ClassLikeAstResolver $classLikeAstResolver
+        private readonly \Rector\Core\PhpParser\ClassLikeAstResolver $classLikeAstResolver
     )
     {
     }

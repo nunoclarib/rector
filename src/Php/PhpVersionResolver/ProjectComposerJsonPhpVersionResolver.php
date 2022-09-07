@@ -16,11 +16,11 @@ final class ProjectComposerJsonPhpVersionResolver
         /**
          * @readonly
          */
-        private VersionParser $versionParser,
+        private readonly VersionParser $versionParser,
         /**
          * @readonly
          */
-        private PhpVersionFactory $phpVersionFactory
+        private readonly PhpVersionFactory $phpVersionFactory
     )
     {
     }

@@ -17,7 +17,7 @@ final class TypeToCallReflectionResolverRegistry
         /**
          * @readonly
          */
-        private array $resolvers
+        private readonly array $resolvers
     )
     {
     }

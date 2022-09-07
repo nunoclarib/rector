@@ -21,7 +21,7 @@ final class ObjectTypeToCallReflectionResolver implements TypeToCallReflectionRe
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider
+        private readonly ReflectionProvider $reflectionProvider
     )
     {
     }

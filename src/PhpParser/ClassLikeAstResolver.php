@@ -25,11 +25,11 @@ final class ClassLikeAstResolver
         /**
          * @readonly
          */
-        private SmartPhpParser $smartPhpParser,
+        private readonly SmartPhpParser $smartPhpParser,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder
+        private readonly BetterNodeFinder $betterNodeFinder
     )
     {
     }

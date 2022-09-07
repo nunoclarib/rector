@@ -25,7 +25,7 @@ final class RectifiedAnalyzer
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator
+        private readonly NodeComparator $nodeComparator
     )
     {
     }

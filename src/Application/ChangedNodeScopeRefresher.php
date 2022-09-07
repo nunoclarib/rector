@@ -41,15 +41,15 @@ final class ChangedNodeScopeRefresher
         /**
          * @readonly
          */
-        private PHPStanNodeScopeResolver $phpStanNodeScopeResolver,
+        private readonly PHPStanNodeScopeResolver $phpStanNodeScopeResolver,
         /**
          * @readonly
          */
-        private ScopeAnalyzer $scopeAnalyzer,
+        private readonly ScopeAnalyzer $scopeAnalyzer,
         /**
          * @readonly
          */
-        private CurrentFileProvider $currentFileProvider
+        private readonly CurrentFileProvider $currentFileProvider
     )
     {
     }

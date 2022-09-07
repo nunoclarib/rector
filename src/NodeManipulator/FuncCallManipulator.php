@@ -12,7 +12,7 @@ final class FuncCallManipulator
         /**
          * @readonly
          */
-        private ValueResolver $valueResolver
+        private readonly ValueResolver $valueResolver
     )
     {
     }

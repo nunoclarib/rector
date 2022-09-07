@@ -17,11 +17,11 @@ final class AdditionalAutoloader
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider,
+        private readonly ParameterProvider $parameterProvider,
         /**
          * @readonly
          */
-        private DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator
+        private readonly DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator
     )
     {
     }

@@ -22,7 +22,7 @@ final class RenamedClassesSourceLocator implements SourceLocator
         /**
          * @readonly
          */
-        private RenamedClassesDataCollector $renamedClassesDataCollector
+        private readonly RenamedClassesDataCollector $renamedClassesDataCollector
     )
     {
     }

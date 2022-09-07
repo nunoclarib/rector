@@ -39,7 +39,7 @@ final class ConstantStringTypeToCallReflectionResolver implements TypeToCallRefl
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider
+        private readonly ReflectionProvider $reflectionProvider
     )
     {
     }

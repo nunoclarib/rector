@@ -17,11 +17,11 @@ final class MissingRectorRulesReporter
         /**
          * @readonly
          */
-        private array $rectors,
+        private readonly array $rectors,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle
+        private readonly OutputStyleInterface $rectorOutputStyle
     )
     {
     }

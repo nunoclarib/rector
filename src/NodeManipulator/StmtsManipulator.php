@@ -15,11 +15,11 @@ final class StmtsManipulator
         /**
          * @readonly
          */
-        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        private readonly SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator
+        private readonly NodeComparator $nodeComparator
     )
     {
     }

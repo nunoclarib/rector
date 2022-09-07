@@ -17,7 +17,7 @@ final class ConfigureCallMergingLoaderFactory
         /**
          * @readonly
          */
-        private ConfigureCallValuesCollector $configureCallValuesCollector
+        private readonly ConfigureCallValuesCollector $configureCallValuesCollector
     )
     {
     }

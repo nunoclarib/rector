@@ -14,47 +14,47 @@ final class Configuration
         /**
          * @readonly
          */
-        private bool $isDryRun = \false,
+        private readonly bool $isDryRun = \false,
         /**
          * @readonly
          */
-        private bool $showProgressBar = \true,
+        private readonly bool $showProgressBar = \true,
         /**
          * @readonly
          */
-        private bool $shouldClearCache = \false,
+        private readonly bool $shouldClearCache = \false,
         /**
          * @readonly
          */
-        private string $outputFormat = ConsoleOutputFormatter::NAME,
+        private readonly string $outputFormat = ConsoleOutputFormatter::NAME,
         /**
          * @readonly
          */
-        private array $fileExtensions = ['php'],
+        private readonly array $fileExtensions = ['php'],
         /**
          * @readonly
          */
-        private array $paths = [],
+        private readonly array $paths = [],
         /**
          * @readonly
          */
-        private bool $showDiffs = \true,
+        private readonly bool $showDiffs = \true,
         /**
          * @readonly
          */
-        private ?string $parallelPort = null,
+        private readonly ?string $parallelPort = null,
         /**
          * @readonly
          */
-        private ?string $parallelIdentifier = null,
+        private readonly ?string $parallelIdentifier = null,
         /**
          * @readonly
          */
-        private bool $isParallel = \false,
+        private readonly bool $isParallel = \false,
         /**
          * @readonly
          */
-        private ?string $memoryLimit = null
+        private readonly ?string $memoryLimit = null
     )
     {
     }

@@ -36,23 +36,23 @@ final class BetterNodeFinder
         /**
          * @readonly
          */
-        private NodeFinder $nodeFinder,
+        private readonly NodeFinder $nodeFinder,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private ClassAnalyzer $classAnalyzer,
+        private readonly ClassAnalyzer $classAnalyzer,
         /**
          * @readonly
          */
-        private MultiInstanceofChecker $multiInstanceofChecker
+        private readonly MultiInstanceofChecker $multiInstanceofChecker
     )
     {
     }

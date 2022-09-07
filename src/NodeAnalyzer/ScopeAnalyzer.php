@@ -21,7 +21,7 @@ final class ScopeAnalyzer
         /**
          * @readonly
          */
-        private ScopeFactory $scopeFactory
+        private readonly ScopeFactory $scopeFactory
     )
     {
     }

@@ -33,47 +33,47 @@ final class ClassDependencyManipulator
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\ClassInsertManipulator $classInsertManipulator,
+        private readonly \Rector\Core\NodeManipulator\ClassInsertManipulator $classInsertManipulator,
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\ClassMethodAssignManipulator $classMethodAssignManipulator,
+        private readonly \Rector\Core\NodeManipulator\ClassMethodAssignManipulator $classMethodAssignManipulator,
         /**
          * @readonly
          */
-        private NodeFactory $nodeFactory,
+        private readonly NodeFactory $nodeFactory,
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\StmtsManipulator $stmtsManipulator,
+        private readonly \Rector\Core\NodeManipulator\StmtsManipulator $stmtsManipulator,
         /**
          * @readonly
          */
-        private PhpVersionProvider $phpVersionProvider,
+        private readonly PhpVersionProvider $phpVersionProvider,
         /**
          * @readonly
          */
-        private PropertyPresenceChecker $propertyPresenceChecker,
+        private readonly PropertyPresenceChecker $propertyPresenceChecker,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private NodesToRemoveCollector $nodesToRemoveCollector,
+        private readonly NodesToRemoveCollector $nodesToRemoveCollector,
         /**
          * @readonly
          */
-        private AutowiredClassMethodOrPropertyAnalyzer $autowiredClassMethodOrPropertyAnalyzer,
+        private readonly AutowiredClassMethodOrPropertyAnalyzer $autowiredClassMethodOrPropertyAnalyzer,
         /**
          * @readonly
          */
-        private DependencyClassMethodDecorator $dependencyClassMethodDecorator,
+        private readonly DependencyClassMethodDecorator $dependencyClassMethodDecorator,
         /**
          * @readonly
          */
-        private ReflectionResolver $reflectionResolver
+        private readonly ReflectionResolver $reflectionResolver
     )
     {
     }

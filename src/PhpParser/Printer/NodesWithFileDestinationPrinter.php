@@ -12,11 +12,11 @@ final class NodesWithFileDestinationPrinter
         /**
          * @readonly
          */
-        private NodePrinterInterface $nodePrinter,
+        private readonly NodePrinterInterface $nodePrinter,
         /**
          * @readonly
          */
-        private PostFileProcessor $postFileProcessor
+        private readonly PostFileProcessor $postFileProcessor
     )
     {
     }

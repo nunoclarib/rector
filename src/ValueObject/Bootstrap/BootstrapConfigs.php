@@ -12,11 +12,11 @@ final class BootstrapConfigs
         /**
          * @readonly
          */
-        private ?string $mainConfigFile,
+        private readonly ?string $mainConfigFile,
         /**
          * @readonly
          */
-        private array $setConfigFiles
+        private readonly array $setConfigFiles
     )
     {
     }

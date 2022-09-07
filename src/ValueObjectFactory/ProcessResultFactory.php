@@ -16,11 +16,11 @@ final class ProcessResultFactory
         /**
          * @readonly
          */
-        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        private readonly RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
         /**
          * @readonly
          */
-        private NodesToRemoveCollector $nodesToRemoveCollector
+        private readonly NodesToRemoveCollector $nodesToRemoveCollector
     )
     {
     }

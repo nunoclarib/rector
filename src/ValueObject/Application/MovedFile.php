@@ -11,11 +11,11 @@ final class MovedFile implements FileWithNodesInterface
         /**
          * @readonly
          */
-        private \Rector\Core\ValueObject\Application\File $file,
+        private readonly \Rector\Core\ValueObject\Application\File $file,
         /**
          * @readonly
          */
-        private string $newFilePath
+        private readonly string $newFilePath
     )
     {
     }

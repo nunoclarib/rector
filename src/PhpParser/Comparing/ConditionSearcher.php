@@ -17,11 +17,11 @@ final class ConditionSearcher
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator
+        private readonly \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator
     )
     {
     }

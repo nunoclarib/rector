@@ -33,7 +33,7 @@ final class ParentAttributeSourceLocator implements SourceLocator
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider
+        private readonly ReflectionProvider $reflectionProvider
     )
     {
     }

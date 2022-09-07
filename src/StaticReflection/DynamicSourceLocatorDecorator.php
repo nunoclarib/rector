@@ -16,15 +16,15 @@ final class DynamicSourceLocatorDecorator
         /**
          * @readonly
          */
-        private DynamicSourceLocatorProvider $dynamicSourceLocatorProvider,
+        private readonly DynamicSourceLocatorProvider $dynamicSourceLocatorProvider,
         /**
          * @readonly
          */
-        private PhpFilesFinder $phpFilesFinder,
+        private readonly PhpFilesFinder $phpFilesFinder,
         /**
          * @readonly
          */
-        private FileAndDirectoryFilter $fileAndDirectoryFilter
+        private readonly FileAndDirectoryFilter $fileAndDirectoryFilter
     )
     {
     }

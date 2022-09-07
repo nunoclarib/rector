@@ -14,7 +14,7 @@ final class RectorConfigProvider
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider
+        private readonly ParameterProvider $parameterProvider
     )
     {
     }

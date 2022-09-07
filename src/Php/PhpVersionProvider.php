@@ -25,11 +25,11 @@ final class PhpVersionProvider
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider,
+        private readonly ParameterProvider $parameterProvider,
         /**
          * @readonly
          */
-        private ProjectComposerJsonPhpVersionResolver $projectComposerJsonPhpVersionResolver
+        private readonly ProjectComposerJsonPhpVersionResolver $projectComposerJsonPhpVersionResolver
     )
     {
     }
@@ -80,7 +80,7 @@ final class PhpVersionProvider
         }
         $this->throwInvalidTypeException($phpVersionFeatures);
     }
-    private function throwInvalidTypeException(mixed $phpVersionFeatures) : void
+    private function throwInvalidTypeException(mixed $phpVersionFeatures) : never
     {
         $errorMessage = \sprintf('Parameter "%s::%s" must be int, "%s" given.%sUse constant from "%s" to provide it, e.g. "%s::%s"', Option::class, 'PHP_VERSION_FEATURES', (string) $phpVersionFeatures, \PHP_EOL, PhpVersion::class, PhpVersion::class, 'PHP_80');
         throw new InvalidConfigurationException($errorMessage);

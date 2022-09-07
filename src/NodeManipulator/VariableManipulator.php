@@ -30,31 +30,31 @@ final class VariableManipulator
         /**
          * @readonly
          */
-        private \Rector\Core\NodeManipulator\AssignManipulator $assignManipulator,
+        private readonly \Rector\Core\NodeManipulator\AssignManipulator $assignManipulator,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        private readonly SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private VariableToConstantGuard $variableToConstantGuard,
+        private readonly VariableToConstantGuard $variableToConstantGuard,
         /**
          * @readonly
          */
-        private NodeComparator $nodeComparator,
+        private readonly NodeComparator $nodeComparator,
         /**
          * @readonly
          */
-        private ExprAnalyzer $exprAnalyzer
+        private readonly ExprAnalyzer $exprAnalyzer
     )
     {
     }

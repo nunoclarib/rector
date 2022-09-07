@@ -17,7 +17,7 @@ final class MergeImportedRectorConfigureCallValuesCompilerPass implements Compil
         /**
          * @readonly
          */
-        private ConfigureCallValuesCollector $configureCallValuesCollector
+        private readonly ConfigureCallValuesCollector $configureCallValuesCollector
     )
     {
     }

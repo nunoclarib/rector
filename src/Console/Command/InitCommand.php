@@ -22,16 +22,16 @@ final class InitCommand extends Command
     public function __construct(/**
      * @readonly
      */
-    private \RectorPrefix202209\Symfony\Component\Filesystem\Filesystem $filesystem, /**
+    private readonly \RectorPrefix202209\Symfony\Component\Filesystem\Filesystem $filesystem, /**
      * @readonly
      */
-    private OutputStyleInterface $rectorOutputStyle, /**
+    private readonly OutputStyleInterface $rectorOutputStyle, /**
      * @readonly
      */
-    private PhpVersionProvider $phpVersionProvider, /**
+    private readonly PhpVersionProvider $phpVersionProvider, /**
      * @readonly
      */
-    private SymfonyStyle $symfonyStyle)
+    private readonly SymfonyStyle $symfonyStyle)
     {
         parent::__construct();
     }

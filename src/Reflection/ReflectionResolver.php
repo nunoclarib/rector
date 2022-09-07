@@ -42,27 +42,27 @@ final class ReflectionResolver
         /**
          * @readonly
          */
-        private ReflectionProvider $reflectionProvider,
+        private readonly ReflectionProvider $reflectionProvider,
         /**
          * @readonly
          */
-        private BetterNodeFinder $betterNodeFinder,
+        private readonly BetterNodeFinder $betterNodeFinder,
         /**
          * @readonly
          */
-        private NodeTypeResolver $nodeTypeResolver,
+        private readonly NodeTypeResolver $nodeTypeResolver,
         /**
          * @readonly
          */
-        private NodeNameResolver $nodeNameResolver,
+        private readonly NodeNameResolver $nodeNameResolver,
         /**
          * @readonly
          */
-        private TypeToCallReflectionResolverRegistry $typeToCallReflectionResolverRegistry,
+        private readonly TypeToCallReflectionResolverRegistry $typeToCallReflectionResolverRegistry,
         /**
          * @readonly
          */
-        private ClassAnalyzer $classAnalyzer
+        private readonly ClassAnalyzer $classAnalyzer
     )
     {
     }

@@ -21,11 +21,11 @@ final class NonPhpFileProcessor implements FileProcessorInterface
         /**
          * @readonly
          */
-        private array $nonPhpRectors,
+        private readonly array $nonPhpRectors,
         /**
          * @readonly
          */
-        private FileDiffFactory $fileDiffFactory
+        private readonly FileDiffFactory $fileDiffFactory
     )
     {
     }

@@ -12,11 +12,11 @@ final class NodeComparator
         /**
          * @readonly
          */
-        private CommentRemover $commentRemover,
+        private readonly CommentRemover $commentRemover,
         /**
          * @readonly
          */
-        private NodePrinterInterface $nodePrinter
+        private readonly NodePrinterInterface $nodePrinter
     )
     {
     }

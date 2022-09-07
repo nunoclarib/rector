@@ -28,39 +28,39 @@ final class PhpFileProcessor implements FileProcessorInterface
         /**
          * @readonly
          */
-        private FormatPerservingPrinter $formatPerservingPrinter,
+        private readonly FormatPerservingPrinter $formatPerservingPrinter,
         /**
          * @readonly
          */
-        private FileProcessor $fileProcessor,
+        private readonly FileProcessor $fileProcessor,
         /**
          * @readonly
          */
-        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        private readonly RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle,
+        private readonly OutputStyleInterface $rectorOutputStyle,
         /**
          * @readonly
          */
-        private FileDiffFileDecorator $fileDiffFileDecorator,
+        private readonly FileDiffFileDecorator $fileDiffFileDecorator,
         /**
          * @readonly
          */
-        private CurrentFileProvider $currentFileProvider,
+        private readonly CurrentFileProvider $currentFileProvider,
         /**
          * @readonly
          */
-        private PostFileProcessor $postFileProcessor,
+        private readonly PostFileProcessor $postFileProcessor,
         /**
          * @readonly
          */
-        private ErrorFactory $errorFactory,
+        private readonly ErrorFactory $errorFactory,
         /**
          * @readonly
          */
-        private FilePathHelper $filePathHelper
+        private readonly FilePathHelper $filePathHelper
     )
     {
     }

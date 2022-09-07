@@ -41,51 +41,51 @@ final class ApplicationFileProcessor
         /**
          * @readonly
          */
-        private Filesystem $filesystem,
+        private readonly Filesystem $filesystem,
         /**
          * @readonly
          */
-        private FileDiffFileDecorator $fileDiffFileDecorator,
+        private readonly FileDiffFileDecorator $fileDiffFileDecorator,
         /**
          * @readonly
          */
-        private RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor,
+        private readonly RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor,
         /**
          * @readonly
          */
-        private OutputStyleInterface $rectorOutputStyle,
+        private readonly OutputStyleInterface $rectorOutputStyle,
         /**
          * @readonly
          */
-        private FileFactory $fileFactory,
+        private readonly FileFactory $fileFactory,
         /**
          * @readonly
          */
-        private NodeScopeResolver $nodeScopeResolver,
+        private readonly NodeScopeResolver $nodeScopeResolver,
         /**
          * @readonly
          */
-        private ArrayParametersMerger $arrayParametersMerger,
+        private readonly ArrayParametersMerger $arrayParametersMerger,
         /**
          * @readonly
          */
-        private ParallelFileProcessor $parallelFileProcessor,
+        private readonly ParallelFileProcessor $parallelFileProcessor,
         /**
          * @readonly
          */
-        private ParameterProvider $parameterProvider,
+        private readonly ParameterProvider $parameterProvider,
         /**
          * @readonly
          */
-        private ScheduleFactory $scheduleFactory,
+        private readonly ScheduleFactory $scheduleFactory,
         /**
          * @readonly
          */
-        private CpuCoreCountProvider $cpuCoreCountProvider,
+        private readonly CpuCoreCountProvider $cpuCoreCountProvider,
         /**
          * @readonly
          */
-        private array $fileProcessors = []
+        private readonly array $fileProcessors = []
     )
     {
     }
