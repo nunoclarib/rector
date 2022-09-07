@@ -21,20 +21,17 @@ final class ClassLikeAstResolver
      * @var array<class-string, Class_|Trait_|Interface_|Enum_|null>
      */
     private $classLikesByName = [];
-    /**
-     * @readonly
-     * @var \Rector\PhpDocParser\PhpParser\SmartPhpParser
-     */
-    private $smartPhpParser;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    public function __construct(SmartPhpParser $smartPhpParser, BetterNodeFinder $betterNodeFinder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private SmartPhpParser $smartPhpParser,
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder
+    )
     {
-        $this->smartPhpParser = $smartPhpParser;
-        $this->betterNodeFinder = $betterNodeFinder;
     }
     /**
      * @return \PhpParser\Node\Stmt\Trait_|\PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Interface_|\PhpParser\Node\Stmt\Enum_|null

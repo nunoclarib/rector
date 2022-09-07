@@ -17,14 +17,13 @@ use Rector\Core\ValueObject\MethodName;
  */
 final class ObjectTypeToCallReflectionResolver implements TypeToCallReflectionResolverInterface
 {
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    public function __construct(ReflectionProvider $reflectionProvider)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider
+    )
     {
-        $this->reflectionProvider = $reflectionProvider;
     }
     public function supports(Type $type) : bool
     {

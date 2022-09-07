@@ -10,11 +10,9 @@ final class ArrayParametersMerger
      *
      * @autor David Grudl (https://davidgrudl.com)
      * @source https://github.com/nette/di/blob/8eb90721a131262f17663e50aee0032a62d0ef08/src/DI/Config/Helpers.php#L31
-     * @param mixed $left
-     * @param mixed $right
      * @return mixed
      */
-    public function merge($left, $right)
+    public function merge(mixed $left, mixed $right)
     {
         if (\is_array($left) && \is_array($right)) {
             return $this->mergeLeftToRightWithCallable($left, $right, function ($leftValue, $rightValue) {
@@ -37,7 +35,7 @@ final class ArrayParametersMerger
      * @param mixed $right
      * @return mixed
      */
-    public function mergeWithCombine($left, $right)
+    public function mergeWithCombine(mixed $left, mixed $right)
     {
         if (\is_array($left) && \is_array($right)) {
             return $this->mergeLeftToRightWithCallable($left, $right, function ($leftValue, $rightValue) {

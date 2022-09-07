@@ -10,20 +10,17 @@ use Rector\Naming\Naming\VariableNaming;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 final class NamedVariableFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Naming\Naming\VariableNaming
-     */
-    private $variableNaming;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    public function __construct(VariableNaming $variableNaming, \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private VariableNaming $variableNaming,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\Node\BetterNodeFinder $betterNodeFinder
+    )
     {
-        $this->variableNaming = $variableNaming;
-        $this->betterNodeFinder = $betterNodeFinder;
     }
     public function createVariable(Node $node, string $variableName) : Variable
     {

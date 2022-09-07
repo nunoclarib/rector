@@ -22,26 +22,21 @@ use Rector\NodeTypeResolver\NodeTypeResolver;
  */
 final class MagicPropertyFetchAnalyzer
 {
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    public function __construct(NodeNameResolver $nodeNameResolver, NodeTypeResolver $nodeTypeResolver, ReflectionProvider $reflectionProvider)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider
+    )
     {
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->reflectionProvider = $reflectionProvider;
     }
     public function isMagicOnType(PropertyFetch $propertyFetch, ObjectType $objectType) : bool
     {
@@ -61,10 +56,7 @@ final class MagicPropertyFetchAnalyzer
         }
         return !$this->hasPublicProperty($propertyFetch, $nodeName);
     }
-    /**
-     * @param \PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $expr
-     */
-    private function hasPublicProperty($expr, string $propertyName) : bool
+    private function hasPublicProperty(\PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $expr, string $propertyName) : bool
     {
         $scope = $expr->getAttribute(AttributeKey::SCOPE);
         if (!$scope instanceof Scope) {

@@ -12,38 +12,29 @@ use Rector\Core\ValueObject\Configuration;
 use Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator;
 final class FileProcessor
 {
-    /**
-     * @readonly
-     * @var \Rector\ChangesReporting\Collector\AffectedFilesCollector
-     */
-    private $affectedFilesCollector;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator
-     */
-    private $nodeScopeAndMetadataDecorator;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Parser\RectorParser
-     */
-    private $rectorParser;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\NodeTraverser\RectorNodeTraverser
-     */
-    private $rectorNodeTraverser;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\NodeTraverser\FileWithoutNamespaceNodeTraverser
-     */
-    private $fileWithoutNamespaceNodeTraverser;
-    public function __construct(AffectedFilesCollector $affectedFilesCollector, NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, RectorParser $rectorParser, RectorNodeTraverser $rectorNodeTraverser, FileWithoutNamespaceNodeTraverser $fileWithoutNamespaceNodeTraverser)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private AffectedFilesCollector $affectedFilesCollector,
+        /**
+         * @readonly
+         */
+        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        /**
+         * @readonly
+         */
+        private RectorParser $rectorParser,
+        /**
+         * @readonly
+         */
+        private RectorNodeTraverser $rectorNodeTraverser,
+        /**
+         * @readonly
+         */
+        private FileWithoutNamespaceNodeTraverser $fileWithoutNamespaceNodeTraverser
+    )
     {
-        $this->affectedFilesCollector = $affectedFilesCollector;
-        $this->nodeScopeAndMetadataDecorator = $nodeScopeAndMetadataDecorator;
-        $this->rectorParser = $rectorParser;
-        $this->rectorNodeTraverser = $rectorNodeTraverser;
-        $this->fileWithoutNamespaceNodeTraverser = $fileWithoutNamespaceNodeTraverser;
     }
     public function parseFileInfoToLocalCache(File $file) : void
     {

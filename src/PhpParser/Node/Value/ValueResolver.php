@@ -35,49 +35,35 @@ final class ValueResolver
      * @var \PhpParser\ConstExprEvaluator|null
      */
     private $constExprEvaluator;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeAnalyzer\ConstFetchAnalyzer
-     */
-    private $constFetchAnalyzer;
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\Provider\CurrentFileProvider
-     */
-    private $currentFileProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    public function __construct(NodeNameResolver $nodeNameResolver, NodeTypeResolver $nodeTypeResolver, ConstFetchAnalyzer $constFetchAnalyzer, ReflectionProvider $reflectionProvider, CurrentFileProvider $currentFileProvider, BetterNodeFinder $betterNodeFinder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private ConstFetchAnalyzer $constFetchAnalyzer,
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider,
+        /**
+         * @readonly
+         */
+        private CurrentFileProvider $currentFileProvider,
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder
+    )
     {
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->constFetchAnalyzer = $constFetchAnalyzer;
-        $this->reflectionProvider = $reflectionProvider;
-        $this->currentFileProvider = $currentFileProvider;
-        $this->betterNodeFinder = $betterNodeFinder;
     }
-    /**
-     * @param mixed $value
-     */
-    public function isValue(Expr $expr, $value) : bool
+    public function isValue(Expr $expr, mixed $value) : bool
     {
         return $this->getValue($expr) === $value;
     }
@@ -170,7 +156,7 @@ final class ValueResolver
         try {
             $constExprEvaluator = $this->getConstExprEvaluator();
             return $constExprEvaluator->evaluateDirectly($expr);
-        } catch (ConstExprEvaluationException $exception) {
+        } catch (ConstExprEvaluationException) {
         }
         return null;
     }

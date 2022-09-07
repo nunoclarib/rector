@@ -12,41 +12,26 @@ use RectorPrefix202209\Webmozart\Assert\Assert;
 final class ProcessResult
 {
     /**
-     * @var SystemError[]
-     * @readonly
-     */
-    private $systemErrors;
-    /**
-     * @var FileDiff[]
-     * @readonly
-     */
-    private $fileDiffs;
-    /**
-     * @readonly
-     * @var int
-     */
-    private $addedFilesCount;
-    /**
-     * @readonly
-     * @var int
-     */
-    private $removedFilesCount;
-    /**
-     * @readonly
-     * @var int
-     */
-    private $removedNodeCount;
-    /**
      * @param FileDiff[] $fileDiffs
      * @param SystemError[] $systemErrors
      */
-    public function __construct(array $systemErrors, array $fileDiffs, int $addedFilesCount, int $removedFilesCount, int $removedNodeCount)
+    public function __construct(/**
+     * @readonly
+     */
+    private array $systemErrors, /**
+     * @readonly
+     */
+    private array $fileDiffs, /**
+     * @readonly
+     */
+    private int $addedFilesCount, /**
+     * @readonly
+     */
+    private int $removedFilesCount, /**
+     * @readonly
+     */
+    private int $removedNodeCount)
     {
-        $this->systemErrors = $systemErrors;
-        $this->fileDiffs = $fileDiffs;
-        $this->addedFilesCount = $addedFilesCount;
-        $this->removedFilesCount = $removedFilesCount;
-        $this->removedNodeCount = $removedNodeCount;
         Assert::allIsAOf($fileDiffs, FileDiff::class);
         Assert::allIsAOf($systemErrors, SystemError::class);
     }

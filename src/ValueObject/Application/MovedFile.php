@@ -7,20 +7,17 @@ use PhpParser\Node\Stmt;
 use Rector\FileSystemRector\Contract\FileWithNodesInterface;
 final class MovedFile implements FileWithNodesInterface
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\ValueObject\Application\File
-     */
-    private $file;
-    /**
-     * @readonly
-     * @var string
-     */
-    private $newFilePath;
-    public function __construct(\Rector\Core\ValueObject\Application\File $file, string $newFilePath)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private \Rector\Core\ValueObject\Application\File $file,
+        /**
+         * @readonly
+         */
+        private string $newFilePath
+    )
     {
-        $this->file = $file;
-        $this->newFilePath = $newFilePath;
     }
     public function getFile() : \Rector\Core\ValueObject\Application\File
     {

@@ -24,62 +24,45 @@ use Rector\Testing\PHPUnit\StaticPHPUnitEnvironment;
 use Throwable;
 final class PhpFileProcessor implements FileProcessorInterface
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Printer\FormatPerservingPrinter
-     */
-    private $formatPerservingPrinter;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileProcessor
-     */
-    private $fileProcessor;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector
-     */
-    private $removedAndAddedFilesCollector;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileDecorator\FileDiffFileDecorator
-     */
-    private $fileDiffFileDecorator;
-    /**
-     * @readonly
-     * @var \Rector\Core\Provider\CurrentFileProvider
-     */
-    private $currentFileProvider;
-    /**
-     * @readonly
-     * @var \Rector\PostRector\Application\PostFileProcessor
-     */
-    private $postFileProcessor;
-    /**
-     * @readonly
-     * @var \Rector\ChangesReporting\ValueObjectFactory\ErrorFactory
-     */
-    private $errorFactory;
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\FilePathHelper
-     */
-    private $filePathHelper;
-    public function __construct(FormatPerservingPrinter $formatPerservingPrinter, FileProcessor $fileProcessor, RemovedAndAddedFilesCollector $removedAndAddedFilesCollector, OutputStyleInterface $rectorOutputStyle, FileDiffFileDecorator $fileDiffFileDecorator, CurrentFileProvider $currentFileProvider, PostFileProcessor $postFileProcessor, ErrorFactory $errorFactory, FilePathHelper $filePathHelper)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private FormatPerservingPrinter $formatPerservingPrinter,
+        /**
+         * @readonly
+         */
+        private FileProcessor $fileProcessor,
+        /**
+         * @readonly
+         */
+        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle,
+        /**
+         * @readonly
+         */
+        private FileDiffFileDecorator $fileDiffFileDecorator,
+        /**
+         * @readonly
+         */
+        private CurrentFileProvider $currentFileProvider,
+        /**
+         * @readonly
+         */
+        private PostFileProcessor $postFileProcessor,
+        /**
+         * @readonly
+         */
+        private ErrorFactory $errorFactory,
+        /**
+         * @readonly
+         */
+        private FilePathHelper $filePathHelper
+    )
     {
-        $this->formatPerservingPrinter = $formatPerservingPrinter;
-        $this->fileProcessor = $fileProcessor;
-        $this->removedAndAddedFilesCollector = $removedAndAddedFilesCollector;
-        $this->rectorOutputStyle = $rectorOutputStyle;
-        $this->fileDiffFileDecorator = $fileDiffFileDecorator;
-        $this->currentFileProvider = $currentFileProvider;
-        $this->postFileProcessor = $postFileProcessor;
-        $this->errorFactory = $errorFactory;
-        $this->filePathHelper = $filePathHelper;
     }
     /**
      * @return array{system_errors: SystemError[], file_diffs: FileDiff[]}

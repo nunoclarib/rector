@@ -14,20 +14,17 @@ use RectorPrefix202209\Symfony\Component\Filesystem\Filesystem;
  */
 final class FormatPerservingPrinter
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Printer\BetterStandardPrinter
-     */
-    private $betterStandardPrinter;
-    /**
-     * @readonly
-     * @var \Symfony\Component\Filesystem\Filesystem
-     */
-    private $filesystem;
-    public function __construct(\Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, Filesystem $filesystem)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
+        /**
+         * @readonly
+         */
+        private Filesystem $filesystem
+    )
     {
-        $this->betterStandardPrinter = $betterStandardPrinter;
-        $this->filesystem = $filesystem;
     }
     /**
      * @param Node[] $newStmts

@@ -54,56 +54,41 @@ final class AstResolver
      * @var array<string, Function_|null>>
      */
     private $functionsByName = [];
-    /**
-     * @readonly
-     * @var \Rector\PhpDocParser\PhpParser\SmartPhpParser
-     */
-    private $smartPhpParser;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator
-     */
-    private $nodeScopeAndMetadataDecorator;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\Reflection\ReflectionResolver
-     */
-    private $reflectionResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\ClassLikeAstResolver
-     */
-    private $classLikeAstResolver;
-    public function __construct(SmartPhpParser $smartPhpParser, NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, BetterNodeFinder $betterNodeFinder, NodeNameResolver $nodeNameResolver, ReflectionProvider $reflectionProvider, ReflectionResolver $reflectionResolver, NodeTypeResolver $nodeTypeResolver, \Rector\Core\PhpParser\ClassLikeAstResolver $classLikeAstResolver)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private SmartPhpParser $smartPhpParser,
+        /**
+         * @readonly
+         */
+        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider,
+        /**
+         * @readonly
+         */
+        private ReflectionResolver $reflectionResolver,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\ClassLikeAstResolver $classLikeAstResolver
+    )
     {
-        $this->smartPhpParser = $smartPhpParser;
-        $this->nodeScopeAndMetadataDecorator = $nodeScopeAndMetadataDecorator;
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->reflectionProvider = $reflectionProvider;
-        $this->reflectionResolver = $reflectionResolver;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->classLikeAstResolver = $classLikeAstResolver;
     }
     /**
      * @return \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_|\PhpParser\Node\Stmt\Interface_|\PhpParser\Node\Stmt\Enum_|null
@@ -158,10 +143,9 @@ final class AstResolver
         return null;
     }
     /**
-     * @param \PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall|\PhpParser\Node\Expr\MethodCall $call
      * @return \PhpParser\Node\Stmt\ClassMethod|\PhpParser\Node\Stmt\Function_|null
      */
-    public function resolveClassMethodOrFunctionFromCall($call, Scope $scope)
+    public function resolveClassMethodOrFunctionFromCall(\PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall|\PhpParser\Node\Expr\MethodCall $call, Scope $scope)
     {
         if ($call instanceof FuncCall) {
             return $this->resolveFunctionFromFuncCall($call, $scope);
@@ -210,10 +194,7 @@ final class AstResolver
         }
         return $classMethod;
     }
-    /**
-     * @param \PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticCall $call
-     */
-    public function resolveClassMethodFromCall($call) : ?ClassMethod
+    public function resolveClassMethodFromCall(\PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticCall $call) : ?ClassMethod
     {
         if ($call instanceof MethodCall) {
             $callerStaticType = $this->nodeTypeResolver->getType($call->var);

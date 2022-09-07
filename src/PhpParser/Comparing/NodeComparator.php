@@ -8,20 +8,17 @@ use Rector\Comments\CommentRemover;
 use Rector\Core\Contract\PhpParser\NodePrinterInterface;
 final class NodeComparator
 {
-    /**
-     * @readonly
-     * @var \Rector\Comments\CommentRemover
-     */
-    private $commentRemover;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\PhpParser\NodePrinterInterface
-     */
-    private $nodePrinter;
-    public function __construct(CommentRemover $commentRemover, NodePrinterInterface $nodePrinter)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private CommentRemover $commentRemover,
+        /**
+         * @readonly
+         */
+        private NodePrinterInterface $nodePrinter
+    )
     {
-        $this->commentRemover = $commentRemover;
-        $this->nodePrinter = $nodePrinter;
     }
     /**
      * Removes all comments from both nodes
@@ -68,8 +65,8 @@ final class NodeComparator
         if ($firstNode->getEndTokenPos() !== $secondNode->getEndTokenPos()) {
             return \false;
         }
-        $firstClass = \get_class($firstNode);
-        $secondClass = \get_class($secondNode);
+        $firstClass = $firstNode::class;
+        $secondClass = $secondNode::class;
         return $firstClass === $secondClass;
     }
 }

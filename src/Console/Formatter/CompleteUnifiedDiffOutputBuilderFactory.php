@@ -11,14 +11,13 @@ use RectorPrefix202209\SebastianBergmann\Diff\Output\UnifiedDiffOutputBuilder;
  */
 final class CompleteUnifiedDiffOutputBuilderFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Util\Reflection\PrivatesAccessor
-     */
-    private $privatesAccessor;
-    public function __construct(PrivatesAccessor $privatesAccessor)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private PrivatesAccessor $privatesAccessor
+    )
     {
-        $this->privatesAccessor = $privatesAccessor;
     }
     /**
      * @api

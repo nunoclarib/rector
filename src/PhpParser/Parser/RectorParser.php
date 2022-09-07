@@ -9,20 +9,17 @@ use PHPStan\Parser\Parser;
 use Rector\Core\PhpParser\ValueObject\StmtsAndTokens;
 final class RectorParser
 {
-    /**
-     * @readonly
-     * @var \PhpParser\Lexer
-     */
-    private $lexer;
-    /**
-     * @readonly
-     * @var \PHPStan\Parser\Parser
-     */
-    private $parser;
-    public function __construct(Lexer $lexer, Parser $parser)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private Lexer $lexer,
+        /**
+         * @readonly
+         */
+        private Parser $parser
+    )
     {
-        $this->lexer = $lexer;
-        $this->parser = $parser;
     }
     /**
      * @return Stmt[]

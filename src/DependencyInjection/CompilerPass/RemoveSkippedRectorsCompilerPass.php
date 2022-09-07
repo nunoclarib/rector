@@ -36,10 +36,7 @@ final class RemoveSkippedRectorsCompilerPass implements CompilerPassInterface
             return $this->isRectorClass($element);
         });
     }
-    /**
-     * @param mixed $element
-     */
-    private function isRectorClass($element) : bool
+    private function isRectorClass(mixed $element) : bool
     {
         if (!\is_string($element)) {
             return \false;

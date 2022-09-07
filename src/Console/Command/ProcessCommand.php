@@ -24,68 +24,38 @@ use RectorPrefix202209\Symfony\Component\Console\Input\InputInterface;
 use RectorPrefix202209\Symfony\Component\Console\Output\OutputInterface;
 final class ProcessCommand extends \Rector\Core\Console\Command\AbstractProcessCommand
 {
-    /**
+    public function __construct(/**
      * @readonly
-     * @var \Rector\Core\Autoloading\AdditionalAutoloader
      */
-    private $additionalAutoloader;
-    /**
+    private AdditionalAutoloader $additionalAutoloader, /**
      * @readonly
-     * @var \Rector\Caching\Detector\ChangedFilesDetector
      */
-    private $changedFilesDetector;
-    /**
+    private ChangedFilesDetector $changedFilesDetector, /**
      * @readonly
-     * @var \Rector\Core\Reporting\MissingRectorRulesReporter
      */
-    private $missingRectorRulesReporter;
-    /**
+    private MissingRectorRulesReporter $missingRectorRulesReporter, /**
      * @readonly
-     * @var \Rector\Core\Application\ApplicationFileProcessor
      */
-    private $applicationFileProcessor;
-    /**
+    private ApplicationFileProcessor $applicationFileProcessor, /**
      * @readonly
-     * @var \Rector\Core\ValueObjectFactory\ProcessResultFactory
      */
-    private $processResultFactory;
-    /**
+    private ProcessResultFactory $processResultFactory, /**
      * @readonly
-     * @var \Rector\Core\StaticReflection\DynamicSourceLocatorDecorator
      */
-    private $dynamicSourceLocatorDecorator;
-    /**
+    private DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator, /**
      * @readonly
-     * @var \Rector\Core\Validation\EmptyConfigurableRectorChecker
      */
-    private $emptyConfigurableRectorChecker;
-    /**
+    private EmptyConfigurableRectorChecker $emptyConfigurableRectorChecker, /**
      * @readonly
-     * @var \Rector\Core\Console\Output\OutputFormatterCollector
      */
-    private $outputFormatterCollector;
-    /**
+    private OutputFormatterCollector $outputFormatterCollector, /**
      * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
      */
-    private $rectorOutputStyle;
-    /**
+    private OutputStyleInterface $rectorOutputStyle, /**
      * @readonly
-     * @var \Rector\Core\Util\MemoryLimiter
      */
-    private $memoryLimiter;
-    public function __construct(AdditionalAutoloader $additionalAutoloader, ChangedFilesDetector $changedFilesDetector, MissingRectorRulesReporter $missingRectorRulesReporter, ApplicationFileProcessor $applicationFileProcessor, ProcessResultFactory $processResultFactory, DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator, EmptyConfigurableRectorChecker $emptyConfigurableRectorChecker, OutputFormatterCollector $outputFormatterCollector, OutputStyleInterface $rectorOutputStyle, MemoryLimiter $memoryLimiter)
+    private MemoryLimiter $memoryLimiter)
     {
-        $this->additionalAutoloader = $additionalAutoloader;
-        $this->changedFilesDetector = $changedFilesDetector;
-        $this->missingRectorRulesReporter = $missingRectorRulesReporter;
-        $this->applicationFileProcessor = $applicationFileProcessor;
-        $this->processResultFactory = $processResultFactory;
-        $this->dynamicSourceLocatorDecorator = $dynamicSourceLocatorDecorator;
-        $this->emptyConfigurableRectorChecker = $emptyConfigurableRectorChecker;
-        $this->outputFormatterCollector = $outputFormatterCollector;
-        $this->rectorOutputStyle = $rectorOutputStyle;
-        $this->memoryLimiter = $memoryLimiter;
         parent::__construct();
     }
     protected function configure() : void

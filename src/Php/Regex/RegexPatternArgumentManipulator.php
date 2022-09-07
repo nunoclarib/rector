@@ -31,44 +31,34 @@ final class RegexPatternArgumentManipulator
      * @var array<string, array<string, int>>
      */
     private const STATIC_METHODS_WITH_PATTERNS_TO_ARGUMENT_POSITION = [Strings::class => ['match' => 1, 'matchAll' => 1, 'replace' => 1, 'split' => 1]];
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\NodeFinder\LocalConstantFinder
-     */
-    private $localConstantFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    public function __construct(BetterNodeFinder $betterNodeFinder, NodeNameResolver $nodeNameResolver, NodeTypeResolver $nodeTypeResolver, LocalConstantFinder $localConstantFinder, NodeComparator $nodeComparator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private LocalConstantFinder $localConstantFinder,
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->localConstantFinder = $localConstantFinder;
-        $this->nodeComparator = $nodeComparator;
     }
     /**
      * @return String_[]
-     * @param \PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall $call
      */
-    public function matchCallArgumentWithRegexPattern($call) : array
+    public function matchCallArgumentWithRegexPattern(\PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall $call) : array
     {
         if ($call instanceof FuncCall) {
             return $this->processFuncCall($call);

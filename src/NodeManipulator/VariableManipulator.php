@@ -26,50 +26,37 @@ use Rector\PhpDocParser\NodeTraverser\SimpleCallableNodeTraverser;
 use Rector\ReadWrite\Guard\VariableToConstantGuard;
 final class VariableManipulator
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeManipulator\AssignManipulator
-     */
-    private $assignManipulator;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\PhpDocParser\NodeTraverser\SimpleCallableNodeTraverser
-     */
-    private $simpleCallableNodeTraverser;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\ReadWrite\Guard\VariableToConstantGuard
-     */
-    private $variableToConstantGuard;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeAnalyzer\ExprAnalyzer
-     */
-    private $exprAnalyzer;
-    public function __construct(\Rector\Core\NodeManipulator\AssignManipulator $assignManipulator, BetterNodeFinder $betterNodeFinder, SimpleCallableNodeTraverser $simpleCallableNodeTraverser, NodeNameResolver $nodeNameResolver, VariableToConstantGuard $variableToConstantGuard, NodeComparator $nodeComparator, ExprAnalyzer $exprAnalyzer)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private \Rector\Core\NodeManipulator\AssignManipulator $assignManipulator,
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private VariableToConstantGuard $variableToConstantGuard,
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator,
+        /**
+         * @readonly
+         */
+        private ExprAnalyzer $exprAnalyzer
+    )
     {
-        $this->assignManipulator = $assignManipulator;
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->variableToConstantGuard = $variableToConstantGuard;
-        $this->nodeComparator = $nodeComparator;
-        $this->exprAnalyzer = $exprAnalyzer;
     }
     /**
      * @return Assign[]
@@ -143,7 +130,7 @@ final class VariableManipulator
             return \false;
         }
         $className = (string) $this->nodeNameResolver->getName($classLike);
-        if (\substr_compare($className, 'Test', -\strlen('Test')) !== 0) {
+        if (!str_ends_with($className, 'Test')) {
             return \false;
         }
         return $this->nodeNameResolver->isName($variable, 'expect*');

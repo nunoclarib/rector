@@ -11,14 +11,13 @@ use Rector\Core\Contract\Console\OutputStyleInterface;
  */
 final class RectorOutputStyle implements OutputStyleInterface
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Console\Style\RectorConsoleOutputStyle
-     */
-    private $rectorConsoleOutputStyle;
-    public function __construct(RectorConsoleOutputStyle $rectorConsoleOutputStyle)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private RectorConsoleOutputStyle $rectorConsoleOutputStyle
+    )
     {
-        $this->rectorConsoleOutputStyle = $rectorConsoleOutputStyle;
     }
     public function progressStart(int $fileCount) : void
     {

@@ -35,82 +35,59 @@ final class ApplicationFileProcessor
      */
     private $systemErrors = [];
     /**
-     * @readonly
-     * @var \Symfony\Component\Filesystem\Filesystem
-     */
-    private $filesystem;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileDecorator\FileDiffFileDecorator
-     */
-    private $fileDiffFileDecorator;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileSystem\RemovedAndAddedFilesProcessor
-     */
-    private $removedAndAddedFilesProcessor;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    /**
-     * @readonly
-     * @var \Rector\Core\ValueObjectFactory\Application\FileFactory
-     */
-    private $fileFactory;
-    /**
-     * @readonly
-     * @var \PHPStan\Analyser\NodeScopeResolver
-     */
-    private $nodeScopeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\Util\ArrayParametersMerger
-     */
-    private $arrayParametersMerger;
-    /**
-     * @readonly
-     * @var \Rector\Parallel\Application\ParallelFileProcessor
-     */
-    private $parallelFileProcessor;
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    /**
-     * @readonly
-     * @var \Symplify\EasyParallel\ScheduleFactory
-     */
-    private $scheduleFactory;
-    /**
-     * @readonly
-     * @var \Symplify\EasyParallel\CpuCoreCountProvider
-     */
-    private $cpuCoreCountProvider;
-    /**
-     * @var FileProcessorInterface[]
-     * @readonly
-     */
-    private $fileProcessors = [];
-    /**
      * @param FileProcessorInterface[] $fileProcessors
      */
-    public function __construct(Filesystem $filesystem, FileDiffFileDecorator $fileDiffFileDecorator, RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor, OutputStyleInterface $rectorOutputStyle, FileFactory $fileFactory, NodeScopeResolver $nodeScopeResolver, ArrayParametersMerger $arrayParametersMerger, ParallelFileProcessor $parallelFileProcessor, ParameterProvider $parameterProvider, ScheduleFactory $scheduleFactory, CpuCoreCountProvider $cpuCoreCountProvider, array $fileProcessors = [])
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private Filesystem $filesystem,
+        /**
+         * @readonly
+         */
+        private FileDiffFileDecorator $fileDiffFileDecorator,
+        /**
+         * @readonly
+         */
+        private RemovedAndAddedFilesProcessor $removedAndAddedFilesProcessor,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle,
+        /**
+         * @readonly
+         */
+        private FileFactory $fileFactory,
+        /**
+         * @readonly
+         */
+        private NodeScopeResolver $nodeScopeResolver,
+        /**
+         * @readonly
+         */
+        private ArrayParametersMerger $arrayParametersMerger,
+        /**
+         * @readonly
+         */
+        private ParallelFileProcessor $parallelFileProcessor,
+        /**
+         * @readonly
+         */
+        private ParameterProvider $parameterProvider,
+        /**
+         * @readonly
+         */
+        private ScheduleFactory $scheduleFactory,
+        /**
+         * @readonly
+         */
+        private CpuCoreCountProvider $cpuCoreCountProvider,
+        /**
+         * @readonly
+         */
+        private array $fileProcessors = []
+    )
     {
-        $this->filesystem = $filesystem;
-        $this->fileDiffFileDecorator = $fileDiffFileDecorator;
-        $this->removedAndAddedFilesProcessor = $removedAndAddedFilesProcessor;
-        $this->rectorOutputStyle = $rectorOutputStyle;
-        $this->fileFactory = $fileFactory;
-        $this->nodeScopeResolver = $nodeScopeResolver;
-        $this->arrayParametersMerger = $arrayParametersMerger;
-        $this->parallelFileProcessor = $parallelFileProcessor;
-        $this->parameterProvider = $parameterProvider;
-        $this->scheduleFactory = $scheduleFactory;
-        $this->cpuCoreCountProvider = $cpuCoreCountProvider;
-        $this->fileProcessors = $fileProcessors;
     }
     /**
      * @return array{system_errors: SystemError[], file_diffs: FileDiff[]}
@@ -277,7 +254,7 @@ final class ApplicationFileProcessor
         $phpFilePaths = [];
         foreach ($files as $file) {
             $filePath = $file->getFilePath();
-            if (\substr_compare($filePath, '.php', -\strlen('.php')) === 0) {
+            if (str_ends_with($filePath, '.php')) {
                 $phpFilePaths[] = $filePath;
             }
         }

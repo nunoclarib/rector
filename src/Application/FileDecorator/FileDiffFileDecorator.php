@@ -7,14 +7,13 @@ use Rector\ChangesReporting\ValueObjectFactory\FileDiffFactory;
 use Rector\Core\ValueObject\Application\File;
 final class FileDiffFileDecorator
 {
-    /**
-     * @readonly
-     * @var \Rector\ChangesReporting\ValueObjectFactory\FileDiffFactory
-     */
-    private $fileDiffFactory;
-    public function __construct(FileDiffFactory $fileDiffFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private FileDiffFactory $fileDiffFactory
+    )
     {
-        $this->fileDiffFactory = $fileDiffFactory;
     }
     /**
      * @param File[] $files

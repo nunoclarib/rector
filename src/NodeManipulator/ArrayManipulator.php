@@ -17,14 +17,13 @@ final class ArrayManipulator
      * @var \Rector\Core\NodeAnalyzer\ExprAnalyzer
      */
     private $exprAnalyzer;
-    /**
-     * @readonly
-     * @var \Rector\ChangesReporting\Collector\RectorChangeCollector
-     */
-    private $rectorChangeCollector;
-    public function __construct(RectorChangeCollector $rectorChangeCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private RectorChangeCollector $rectorChangeCollector
+    )
     {
-        $this->rectorChangeCollector = $rectorChangeCollector;
     }
     /**
      * @required
@@ -96,7 +95,7 @@ final class ArrayManipulator
         if (!$expr instanceof Expr) {
             return \true;
         }
-        return \in_array(\get_class($expr), [String_::class, LNumber::class], \true);
+        return \in_array($expr::class, [String_::class, LNumber::class], \true);
     }
     private function isAllowedArrayValue(Expr $expr) : bool
     {

@@ -14,14 +14,13 @@ use Rector\Core\PhpParser\Node\AssignAndBinaryMap;
 use Rector\Php71\ValueObject\TwoNodeMatch;
 final class BinaryOpManipulator
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\AssignAndBinaryMap
-     */
-    private $assignAndBinaryMap;
-    public function __construct(AssignAndBinaryMap $assignAndBinaryMap)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private AssignAndBinaryMap $assignAndBinaryMap
+    )
     {
-        $this->assignAndBinaryMap = $assignAndBinaryMap;
     }
     /**
      * Tries to match left or right parts (xor),
@@ -30,7 +29,7 @@ final class BinaryOpManipulator
      * @param callable(Node $firstNode, Node $secondNode=): bool|class-string<Node> $firstCondition
      * @param callable(Node $firstNode, Node $secondNode=): bool|class-string<Node> $secondCondition
      */
-    public function matchFirstAndSecondConditionNode(BinaryOp $binaryOp, $firstCondition, $secondCondition) : ?TwoNodeMatch
+    public function matchFirstAndSecondConditionNode(BinaryOp $binaryOp, callable|string $firstCondition, callable|string $secondCondition) : ?TwoNodeMatch
     {
         $this->validateCondition($firstCondition);
         $this->validateCondition($secondCondition);
@@ -79,10 +78,7 @@ final class BinaryOpManipulator
         }
         return new $inversedNodeClass($binaryOp->left, $binaryOp->right);
     }
-    /**
-     * @return \PhpParser\Node\Expr\BinaryOp|\PhpParser\Node\Expr|\PhpParser\Node\Expr\BooleanNot
-     */
-    public function inverseNode(Expr $expr)
+    public function inverseNode(Expr $expr): \PhpParser\Node\Expr\BinaryOp|\PhpParser\Node\Expr|\PhpParser\Node\Expr\BooleanNot
     {
         if ($expr instanceof BinaryOp) {
             $inversedBinaryOp = $this->assignAndBinaryMap->getInversed($expr);
@@ -98,7 +94,7 @@ final class BinaryOpManipulator
     /**
      * @param callable(Node $firstNode, Node $secondNode=): bool|class-string<Node> $firstCondition
      */
-    private function validateCondition($firstCondition) : void
+    private function validateCondition(callable|string $firstCondition) : void
     {
         if (\is_callable($firstCondition)) {
             return;
@@ -112,7 +108,7 @@ final class BinaryOpManipulator
      * @param callable(Node $firstNode, Node $secondNode=): bool|class-string<Node> $condition
      * @return callable(Node $firstNode, Node $secondNode=): bool
      */
-    private function normalizeCondition($condition) : callable
+    private function normalizeCondition(callable|string $condition) : callable
     {
         if (\is_callable($condition)) {
             return $condition;

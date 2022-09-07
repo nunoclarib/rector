@@ -13,20 +13,17 @@ use PhpParser\Node\Stmt\If_;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 final class ConditionSearcher
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    public function __construct(BetterNodeFinder $betterNodeFinder, \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\Comparing\NodeComparator $nodeComparator
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeComparator = $nodeComparator;
     }
     public function hasIfAndElseForVariableRedeclaration(Assign $assign, If_ $if) : bool
     {

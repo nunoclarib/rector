@@ -23,50 +23,38 @@ final class PropertyFetchFinder
      * @var string
      */
     private const THIS = 'this';
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\Reflection\ReflectionResolver
-     */
-    private $reflectionResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\AstResolver
-     */
-    private $astResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeAnalyzer\PropertyFetchAnalyzer
-     */
-    private $propertyFetchAnalyzer;
-    public function __construct(BetterNodeFinder $betterNodeFinder, NodeNameResolver $nodeNameResolver, ReflectionResolver $reflectionResolver, AstResolver $astResolver, NodeTypeResolver $nodeTypeResolver, PropertyFetchAnalyzer $propertyFetchAnalyzer)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private ReflectionResolver $reflectionResolver,
+        /**
+         * @readonly
+         */
+        private AstResolver $astResolver,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private PropertyFetchAnalyzer $propertyFetchAnalyzer
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->reflectionResolver = $reflectionResolver;
-        $this->astResolver = $astResolver;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->propertyFetchAnalyzer = $propertyFetchAnalyzer;
     }
     /**
      * @return PropertyFetch[]|StaticPropertyFetch[]
-     * @param \PhpParser\Node\Stmt\Property|\PhpParser\Node\Param $propertyOrPromotedParam
      */
-    public function findPrivatePropertyFetches(Class_ $class, $propertyOrPromotedParam) : array
+    public function findPrivatePropertyFetches(Class_ $class, \PhpParser\Node\Stmt\Property|\PhpParser\Node\Param $propertyOrPromotedParam) : array
     {
         $propertyName = $this->resolvePropertyName($propertyOrPromotedParam);
         if ($propertyName === null) {
@@ -97,9 +85,8 @@ final class PropertyFetchFinder
     /**
      * @param Stmt[] $stmts
      * @return PropertyFetch[]|StaticPropertyFetch[]
-     * @param \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class
      */
-    private function findPropertyFetchesInClassLike($class, array $stmts, string $propertyName, bool $hasTrait) : array
+    private function findPropertyFetchesInClassLike(\PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class, array $stmts, string $propertyName, bool $hasTrait) : array
     {
         /** @var PropertyFetch[] $propertyFetches */
         $propertyFetches = $this->betterNodeFinder->findInstanceOf($stmts, PropertyFetch::class);
@@ -118,10 +105,7 @@ final class PropertyFetchFinder
         });
         return \array_merge($matchingPropertyFetches, $matchingStaticPropertyFetches);
     }
-    /**
-     * @param \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class
-     */
-    private function isInAnonymous(PropertyFetch $propertyFetch, $class, bool $hasTrait) : bool
+    private function isInAnonymous(PropertyFetch $propertyFetch, \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class, bool $hasTrait) : bool
     {
         $parentNode = $this->betterNodeFinder->findParentType($propertyFetch, Class_::class);
         if (!$parentNode instanceof Class_) {
@@ -129,10 +113,7 @@ final class PropertyFetchFinder
         }
         return $parentNode !== $class && !$hasTrait;
     }
-    /**
-     * @param \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class
-     */
-    private function isNamePropertyNameEquals(PropertyFetch $propertyFetch, string $propertyName, $class) : bool
+    private function isNamePropertyNameEquals(PropertyFetch $propertyFetch, string $propertyName, \PhpParser\Node\Stmt\Class_|\PhpParser\Node\Stmt\Trait_ $class) : bool
     {
         // early check if property fetch name is not equals with property name
         // so next check is check var name and var type only
@@ -150,10 +131,7 @@ final class PropertyFetchFinder
         $classLikeName = $this->nodeNameResolver->getName($class);
         return $propertyFetchVarTypeClassName === $classLikeName;
     }
-    /**
-     * @param \PhpParser\Node\Stmt\Property|\PhpParser\Node\Param $propertyOrPromotedParam
-     */
-    private function resolvePropertyName($propertyOrPromotedParam) : ?string
+    private function resolvePropertyName(\PhpParser\Node\Stmt\Property|\PhpParser\Node\Param $propertyOrPromotedParam) : ?string
     {
         if ($propertyOrPromotedParam instanceof Property) {
             return $this->nodeNameResolver->getName($propertyOrPromotedParam->props[0]);

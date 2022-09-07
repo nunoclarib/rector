@@ -10,14 +10,13 @@ use RectorPrefix202209\Symfony\Component\Console\Output\ConsoleOutput;
 use RectorPrefix202209\Symfony\Component\Console\Output\OutputInterface;
 final class RectorConsoleOutputStyleFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Util\Reflection\PrivatesAccessor
-     */
-    private $privatesAccessor;
-    public function __construct(PrivatesAccessor $privatesAccessor)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private PrivatesAccessor $privatesAccessor
+    )
     {
-        $this->privatesAccessor = $privatesAccessor;
     }
     public function create() : \Rector\Core\Console\Style\RectorConsoleOutputStyle
     {

@@ -45,26 +45,21 @@ final class InlineCodeParser
      * @see https://regex101.com/r/1lzQZv/1
      */
     private const BACKREFERENCE_NO_QUOTE_REGEX = '#(?<!")(?<backreference>\\\\\\d+)(?!")#';
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\PhpParser\NodePrinterInterface
-     */
-    private $nodePrinter;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeScopeAndMetadataDecorator
-     */
-    private $nodeScopeAndMetadataDecorator;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Parser\SimplePhpParser
-     */
-    private $simplePhpParser;
-    public function __construct(NodePrinterInterface $nodePrinter, NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator, \Rector\Core\PhpParser\Parser\SimplePhpParser $simplePhpParser)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodePrinterInterface $nodePrinter,
+        /**
+         * @readonly
+         */
+        private NodeScopeAndMetadataDecorator $nodeScopeAndMetadataDecorator,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\Parser\SimplePhpParser $simplePhpParser
+    )
     {
-        $this->nodePrinter = $nodePrinter;
-        $this->nodeScopeAndMetadataDecorator = $nodeScopeAndMetadataDecorator;
-        $this->simplePhpParser = $simplePhpParser;
     }
     /**
      * @return Stmt[]

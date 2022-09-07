@@ -37,26 +37,21 @@ use Rector\NodeTypeResolver\PHPStan\Scope\PHPStanNodeScopeResolver;
  */
 final class ChangedNodeScopeRefresher
 {
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\PHPStan\Scope\PHPStanNodeScopeResolver
-     */
-    private $phpStanNodeScopeResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeAnalyzer\ScopeAnalyzer
-     */
-    private $scopeAnalyzer;
-    /**
-     * @readonly
-     * @var \Rector\Core\Provider\CurrentFileProvider
-     */
-    private $currentFileProvider;
-    public function __construct(PHPStanNodeScopeResolver $phpStanNodeScopeResolver, ScopeAnalyzer $scopeAnalyzer, CurrentFileProvider $currentFileProvider)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private PHPStanNodeScopeResolver $phpStanNodeScopeResolver,
+        /**
+         * @readonly
+         */
+        private ScopeAnalyzer $scopeAnalyzer,
+        /**
+         * @readonly
+         */
+        private CurrentFileProvider $currentFileProvider
+    )
     {
-        $this->phpStanNodeScopeResolver = $phpStanNodeScopeResolver;
-        $this->scopeAnalyzer = $scopeAnalyzer;
-        $this->currentFileProvider = $currentFileProvider;
     }
     public function refresh(Node $node, ?MutatingScope $mutatingScope, ?string $filePath = null) : void
     {
@@ -81,7 +76,7 @@ final class ChangedNodeScopeRefresher
              *  which verify if no parent and no scope, it resolve Scope from File
              */
             $parentNode = $node->getAttribute(AttributeKey::PARENT_NODE);
-            $errorMessage = \sprintf('Node "%s" with parent of "%s" is missing scope required for scope refresh.', \get_class($node), \get_class($parentNode));
+            $errorMessage = \sprintf('Node "%s" with parent of "%s" is missing scope required for scope refresh.', $node::class, $parentNode::class);
             throw new ShouldNotHappenException($errorMessage);
         }
         // note from flight: when we traverse ClassMethod, the scope must be already in Class_, otherwise it crashes
@@ -132,7 +127,7 @@ final class ChangedNodeScopeRefresher
         if ($node instanceof Expr) {
             return [new Expression($node)];
         }
-        $errorMessage = \sprintf('Complete parent node of "%s" be a stmt.', \get_class($node));
+        $errorMessage = \sprintf('Complete parent node of "%s" be a stmt.', $node::class);
         throw new ShouldNotHappenException($errorMessage);
     }
 }

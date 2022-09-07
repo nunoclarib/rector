@@ -13,14 +13,13 @@ use RectorPrefix202209\Symfony\Component\DependencyInjection\Definition;
  */
 final class EmptyConfigurableRectorCollector
 {
-    /**
-     * @readonly
-     * @var \Symfony\Component\DependencyInjection\ContainerBuilder
-     */
-    private $containerBuilder;
-    public function __construct(ContainerBuilder $containerBuilder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ContainerBuilder $containerBuilder
+    )
     {
-        $this->containerBuilder = $containerBuilder;
     }
     /**
      * @return array<class-string<ConfigurableRectorInterface>>

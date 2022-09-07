@@ -16,14 +16,13 @@ final class ClassAnalyzer
      * @see https://regex101.com/r/FQH6RT/1
      */
     private const ANONYMOUS_CLASS_REGEX = '#AnonymousClass\\w+$#';
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    public function __construct(NodeNameResolver $nodeNameResolver)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver
+    )
     {
-        $this->nodeNameResolver = $nodeNameResolver;
     }
     public function isAnonymousClassName(string $className) : bool
     {

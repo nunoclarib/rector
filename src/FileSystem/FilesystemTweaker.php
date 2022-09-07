@@ -16,7 +16,7 @@ final class FilesystemTweaker
     {
         $absolutePathsFound = [];
         foreach ($paths as $path) {
-            if (\strpos($path, '*') !== \false) {
+            if (str_contains($path, '*')) {
                 $foundPaths = $this->foundInGlob($path);
                 $absolutePathsFound = \array_merge($absolutePathsFound, $foundPaths);
             } else {

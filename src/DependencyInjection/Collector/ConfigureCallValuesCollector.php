@@ -81,7 +81,7 @@ final class ConfigureCallValuesCollector
                             if ($reflectionConstant === \false) {
                                 continue;
                             }
-                            if (\strpos((string) $reflectionConstant->getDocComment(), '@deprecated') === \false) {
+                            if (!str_contains((string) $reflectionConstant->getDocComment(), '@deprecated')) {
                                 continue;
                             }
                             $warningMessage = \sprintf('The constant for "%s::%s" is deprecated.%sUse "$rectorConfig->ruleWithConfiguration()" instead.', $rectorClass, $constantName, \PHP_EOL);

@@ -30,14 +30,13 @@ final class RenameClassNonPhpRector implements NonPhpRectorInterface, Configurab
      * @var array<string, string>
      */
     private $renameClasses = [];
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\RenamedClassesDataCollector
-     */
-    private $renamedClassesDataCollector;
-    public function __construct(RenamedClassesDataCollector $renamedClassesDataCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private RenamedClassesDataCollector $renamedClassesDataCollector
+    )
     {
-        $this->renamedClassesDataCollector = $renamedClassesDataCollector;
     }
     public function getRuleDefinition() : RuleDefinition
     {
@@ -91,7 +90,7 @@ CODE_SAMPLE
     {
         foreach ($classRenames as $oldClass => $newClass) {
             // to prevent no slash override
-            if (\strpos($oldClass, '\\') === \false) {
+            if (!str_contains($oldClass, '\\')) {
                 continue;
             }
             $doubleSlashOldClass = \str_replace('\\', '\\\\', $oldClass);
@@ -113,7 +112,7 @@ CODE_SAMPLE
     }
     private function createOldClassRegex(string $oldClass) : string
     {
-        if (\strpos($oldClass, '\\') === \false) {
+        if (!str_contains($oldClass, '\\')) {
             return self::STANDALONE_CLASS_PREFIX_REGEX . \preg_quote($oldClass, '#') . self::STANDALONE_CLASS_SUFFIX_REGEX;
         }
         return '#' . \preg_quote($oldClass, '#') . '#';

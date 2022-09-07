@@ -19,7 +19,7 @@ final class RectorContainerFactory
         if ($mainConfigFile !== null) {
             // warning about old syntax before RectorConfig
             $fileContents = FileSystem::read($mainConfigFile);
-            if (\strpos($fileContents, 'ContainerConfigurator $containerConfigurator') !== \false) {
+            if (str_contains($fileContents, 'ContainerConfigurator $containerConfigurator')) {
                 $warningMessage = \sprintf('Your "%s" config uses deprecated syntax with "ContainerConfigurator".%sUpgrade to "RectorConfig": https://getrector.org/blog/new-in-rector-012-introducing-rector-config-with-autocomplete', $mainConfigFile, \PHP_EOL);
                 throw new DeprecatedException($warningMessage);
             }

@@ -21,20 +21,17 @@ final class PhpVersionProvider
      * @see https://regex101.com/r/qBMnbl/1
      */
     private const VALID_PHP_VERSION_REGEX = '#^\\d{5,6}$#';
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\Php\PhpVersionResolver\ProjectComposerJsonPhpVersionResolver
-     */
-    private $projectComposerJsonPhpVersionResolver;
-    public function __construct(ParameterProvider $parameterProvider, ProjectComposerJsonPhpVersionResolver $projectComposerJsonPhpVersionResolver)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ParameterProvider $parameterProvider,
+        /**
+         * @readonly
+         */
+        private ProjectComposerJsonPhpVersionResolver $projectComposerJsonPhpVersionResolver
+    )
     {
-        $this->parameterProvider = $parameterProvider;
-        $this->projectComposerJsonPhpVersionResolver = $projectComposerJsonPhpVersionResolver;
     }
     /**
      * @return PhpVersion::*
@@ -64,10 +61,7 @@ final class PhpVersionProvider
     {
         return $phpVersion <= $this->provide();
     }
-    /**
-     * @param mixed $phpVersionFeatures
-     */
-    private function validatePhpVersionFeaturesParameter($phpVersionFeatures) : void
+    private function validatePhpVersionFeaturesParameter(mixed $phpVersionFeatures) : void
     {
         if ($phpVersionFeatures === null) {
             return;
@@ -86,10 +80,7 @@ final class PhpVersionProvider
         }
         $this->throwInvalidTypeException($phpVersionFeatures);
     }
-    /**
-     * @param mixed $phpVersionFeatures
-     */
-    private function throwInvalidTypeException($phpVersionFeatures) : void
+    private function throwInvalidTypeException(mixed $phpVersionFeatures) : void
     {
         $errorMessage = \sprintf('Parameter "%s::%s" must be int, "%s" given.%sUse constant from "%s" to provide it, e.g. "%s::%s"', Option::class, 'PHP_VERSION_FEATURES', (string) $phpVersionFeatures, \PHP_EOL, PhpVersion::class, PhpVersion::class, 'PHP_80');
         throw new InvalidConfigurationException($errorMessage);

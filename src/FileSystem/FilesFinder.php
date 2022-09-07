@@ -14,32 +14,25 @@ use RectorPrefix202209\Symfony\Component\Finder\SplFileInfo;
  */
 final class FilesFinder
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\FilesystemTweaker
-     */
-    private $filesystemTweaker;
-    /**
-     * @readonly
-     * @var \Rector\Skipper\SkipCriteriaResolver\SkippedPathsResolver
-     */
-    private $skippedPathsResolver;
-    /**
-     * @readonly
-     * @var \Rector\Caching\UnchangedFilesFilter
-     */
-    private $unchangedFilesFilter;
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\FileAndDirectoryFilter
-     */
-    private $fileAndDirectoryFilter;
-    public function __construct(\Rector\Core\FileSystem\FilesystemTweaker $filesystemTweaker, SkippedPathsResolver $skippedPathsResolver, UnchangedFilesFilter $unchangedFilesFilter, \Rector\Core\FileSystem\FileAndDirectoryFilter $fileAndDirectoryFilter)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private \Rector\Core\FileSystem\FilesystemTweaker $filesystemTweaker,
+        /**
+         * @readonly
+         */
+        private SkippedPathsResolver $skippedPathsResolver,
+        /**
+         * @readonly
+         */
+        private UnchangedFilesFilter $unchangedFilesFilter,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\FileSystem\FileAndDirectoryFilter $fileAndDirectoryFilter
+    )
     {
-        $this->filesystemTweaker = $filesystemTweaker;
-        $this->skippedPathsResolver = $skippedPathsResolver;
-        $this->unchangedFilesFilter = $unchangedFilesFilter;
-        $this->fileAndDirectoryFilter = $fileAndDirectoryFilter;
     }
     /**
      * @param string[] $source

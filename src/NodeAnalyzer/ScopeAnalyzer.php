@@ -17,14 +17,13 @@ final class ScopeAnalyzer
      * @var array<class-string<Node>>
      */
     private const NO_SCOPE_NODES = [Name::class, Identifier::class, Param::class, Arg::class];
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\PHPStan\Scope\ScopeFactory
-     */
-    private $scopeFactory;
-    public function __construct(ScopeFactory $scopeFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ScopeFactory $scopeFactory
+    )
     {
-        $this->scopeFactory = $scopeFactory;
     }
     public function hasScope(Node $node) : bool
     {

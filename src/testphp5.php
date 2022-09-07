@@ -629,7 +629,7 @@ abstract class Node extends Neo4j\Node
 	 * @param Node\Person $actorNode
 	 * @return array|bool|Node[]
 	 */
-	public static function getByIdArrayForActor($idArray, $actorNode = null)
+	public static function getByIdArrayForActor($idArray, $actorNode = null): array|bool
 	{
 		if (!$actorNode) {
 			return static::getByIdArray($idArray);
@@ -782,12 +782,11 @@ abstract class Node extends Neo4j\Node
 	}
 
 	/**
-	 * @param string $url
-	 *
-	 * @return bool|Node
-	 * @throws \Exception
-	 */
-	public static function findObjectAndAuthorAndProviderByContentUrl($url)
+  * @param string $url
+  *
+  * @throws \Exception
+  */
+ public static function findObjectAndAuthorAndProviderByContentUrl($url): bool|\Campus\Lib\Graph\Node
 	{
 		$url = Url::prepareForStorage($url);
 
@@ -816,10 +815,9 @@ abstract class Node extends Neo4j\Node
 	}
 
 	/**
-	 * @param $url
-	 * @return bool|Node
-	 */
-	public static function findObjectAndAuthorAndProviderByCommentsUrl($url)
+  * @param $url
+  */
+ public static function findObjectAndAuthorAndProviderByCommentsUrl($url): bool|\Campus\Lib\Graph\Node
 	{
 		$query = "
             MATCH (objectNode:URL {commentsUrl:{url}})-[:ORIGIN]->(:SOURCE {id:{dataSource}})
@@ -913,10 +911,9 @@ abstract class Node extends Neo4j\Node
 	}
 
 	/**
-	 * @param array $ids
-	 * @return array
-	 */
-	public static function findNodeIdsFromObjectIdArray(array $ids)
+  * @return array
+  */
+ public static function findNodeIdsFromObjectIdArray(array $ids)
 	{
 		$nodeLabel = StringUtils::getLabelNameFromObjectType(static::$objectType);
 		$query = "
@@ -938,10 +935,7 @@ abstract class Node extends Neo4j\Node
 		return $nodeIds;
 	}
 
-	/**
-	 * @return Node\Organization|Node\Group
-	 */
-	public function getProviderNode()
+	public function getProviderNode(): \Node\Organization|\Node\Group
 	{
 		$query = "
 			MATCH (root)<-[:PROVIDE]-(provider)
@@ -957,10 +951,7 @@ abstract class Node extends Neo4j\Node
 		return $providerNode;
 	}
 
-	/**
-	 * @return bool|Node\Source
-	 */
-	public function getSourceNode()
+	public function getSourceNode(): bool|\Node\Source
 	{
 		$query = "
 			MATCH (root)-[:ORIGIN]->(sourceNode:SOURCE)
@@ -977,10 +968,7 @@ abstract class Node extends Neo4j\Node
 		return $objectNode;
 	}
 
-	/**
-	 * @return Node\ImageCollection|Node\Service|Node\Task|Node\MissionCollection
-	 */
-	public function getTargetNode()
+	public function getTargetNode(): \Node\ImageCollection|\Node\Service|\Node\Task|\Node\MissionCollection
 	{
 		$query = "
 			MATCH (root)-[:ADD]->(target)
@@ -1092,10 +1080,9 @@ abstract class Node extends Neo4j\Node
 	}
 
 	/**
-	 * @param array $personIds
-	 * @return array
-	 */
-	public function filterPersonIdArrayHasFavorited(array $personIds)
+  * @return array
+  */
+ public function filterPersonIdArrayHasFavorited(array $personIds)
 	{
 		$personNodeIds = Node\Person::findNodeIdsFromObjectIdArray($personIds);
 
@@ -1384,11 +1371,10 @@ abstract class Node extends Neo4j\Node
 	}
 
 	/**
-	 * @param string $property
-	 * @param mixed $value
-	 * @return static
-	 */
-	public function setProperty($property, $value)
+  * @param string $property
+  * @return static
+  */
+ public function setProperty($property, mixed $value)
 	{
 		//
 		// Ignore property if restricted for Pinnable objects
@@ -1454,14 +1440,14 @@ abstract class Node extends Neo4j\Node
 		list($firstPart, $secondPart) = explode($keyword, $query, 2);
 
 		// If there are WITH in the middle, we just want the last part
-		if (strpos($firstPart, 'WITH') !== false) {
+		if (str_contains($firstPart, 'WITH')) {
 			$beforeWith = explode('WITH', $firstPart);
 
 			$firstPart = array_pop($beforeWith);
 			$beforeWith = implode('WITH', $beforeWith);
 		}
 
-		if (strpos($firstPart, 'WHERE') !== false) {
+		if (str_contains($firstPart, 'WHERE')) {
 			list($firstPart, $existingWhere) = explode('WHERE', $firstPart, 2);
 			$condition = "{$existingWhere} AND ({$condition})";
 		}
@@ -1611,7 +1597,7 @@ abstract class Node extends Neo4j\Node
 			//
 			// Be sure to remove '@' characters from non standard properties
 			//
-			if (strpos($key, '@') === 0) $key = substr($key, 1);
+			if (str_starts_with($key, '@')) $key = substr($key, 1);
 			if ($namespace) $key = $namespace . '_' . $key;
 			if (is_scalar($value)) $destiny[$key] = $value;
 			if (is_array($value)) self::flatten($value, $destiny, $key);
@@ -1800,7 +1786,7 @@ abstract class Node extends Neo4j\Node
 	 * @throws \Campus\Exceptions\Neo4j\Neo4jConnectionException
 	 * @throws \Campus\Exceptions\Neo4j\Neo4jCypherQueryException
 	 */
-	public static function countRelation($nodeLabel = "", $relation, $nodeLabelRelated = null, $since = null, $until = null, $gps = false)
+	public static function countRelation($relation, $nodeLabel = "", $nodeLabelRelated = null, $since = null, $until = null, $gps = false)
 	{
 
 		if ($gps && Config::getPlatformId() === 'gps') {

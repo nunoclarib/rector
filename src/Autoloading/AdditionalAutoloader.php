@@ -13,20 +13,17 @@ use RectorPrefix202209\Webmozart\Assert\Assert;
  */
 final class AdditionalAutoloader
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\StaticReflection\DynamicSourceLocatorDecorator
-     */
-    private $dynamicSourceLocatorDecorator;
-    public function __construct(ParameterProvider $parameterProvider, DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ParameterProvider $parameterProvider,
+        /**
+         * @readonly
+         */
+        private DynamicSourceLocatorDecorator $dynamicSourceLocatorDecorator
+    )
     {
-        $this->parameterProvider = $parameterProvider;
-        $this->dynamicSourceLocatorDecorator = $dynamicSourceLocatorDecorator;
     }
     public function autoloadInput(InputInterface $input) : void
     {

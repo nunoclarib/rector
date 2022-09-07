@@ -33,56 +33,41 @@ final class ClassMethodAssignManipulator
      * @var array<string, string[]>
      */
     private $alreadyAddedClassMethodNames = [];
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\NodeFactory
-     */
-    private $nodeFactory;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeManipulator\VariableManipulator
-     */
-    private $variableManipulator;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    /**
-     * @readonly
-     * @var \Rector\Core\Reflection\ReflectionResolver
-     */
-    private $reflectionResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeManipulator\ArrayDestructVariableFilter
-     */
-    private $arrayDestructVariableFilter;
-    /**
-     * @readonly
-     * @var \Rector\DeadCode\NodeAnalyzer\ExprUsedInNextNodeAnalyzer
-     */
-    private $exprUsedInNextNodeAnalyzer;
-    public function __construct(BetterNodeFinder $betterNodeFinder, NodeFactory $nodeFactory, NodeNameResolver $nodeNameResolver, \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator, NodeComparator $nodeComparator, ReflectionResolver $reflectionResolver, \Rector\Core\NodeManipulator\ArrayDestructVariableFilter $arrayDestructVariableFilter, ExprUsedInNextNodeAnalyzer $exprUsedInNextNodeAnalyzer)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeFactory $nodeFactory,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\NodeManipulator\VariableManipulator $variableManipulator,
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator,
+        /**
+         * @readonly
+         */
+        private ReflectionResolver $reflectionResolver,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\NodeManipulator\ArrayDestructVariableFilter $arrayDestructVariableFilter,
+        /**
+         * @readonly
+         */
+        private ExprUsedInNextNodeAnalyzer $exprUsedInNextNodeAnalyzer
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeFactory = $nodeFactory;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->variableManipulator = $variableManipulator;
-        $this->nodeComparator = $nodeComparator;
-        $this->reflectionResolver = $reflectionResolver;
-        $this->arrayDestructVariableFilter = $arrayDestructVariableFilter;
-        $this->exprUsedInNextNodeAnalyzer = $exprUsedInNextNodeAnalyzer;
     }
     /**
      * @return Assign[]

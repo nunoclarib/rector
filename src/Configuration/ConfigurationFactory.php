@@ -10,20 +10,17 @@ use Rector\Core\ValueObject\Configuration;
 use RectorPrefix202209\Symfony\Component\Console\Input\InputInterface;
 final class ConfigurationFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    public function __construct(ParameterProvider $parameterProvider, OutputStyleInterface $rectorOutputStyle)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ParameterProvider $parameterProvider,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle
+    )
     {
-        $this->parameterProvider = $parameterProvider;
-        $this->rectorOutputStyle = $rectorOutputStyle;
     }
     /**
      * @param string[] $paths
@@ -71,7 +68,7 @@ final class ConfigurationFactory
     {
         // fixes bash edge-case that to merges string with space to one
         foreach ($commandLinePaths as $commandLinePath) {
-            if (\strpos($commandLinePath, ' ') !== \false) {
+            if (str_contains($commandLinePath, ' ')) {
                 $commandLinePaths = \explode(' ', $commandLinePath);
             }
         }

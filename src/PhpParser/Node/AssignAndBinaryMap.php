@@ -67,7 +67,7 @@ final class AssignAndBinaryMap
      */
     public function getAlternative(Node $node) : ?string
     {
-        $nodeClass = \get_class($node);
+        $nodeClass = $node::class;
         if ($node instanceof AssignOp) {
             return self::ASSIGN_OP_TO_BINARY_OP_CLASSES[$nodeClass] ?? null;
         }
@@ -81,7 +81,7 @@ final class AssignAndBinaryMap
      */
     public function getInversed(BinaryOp $binaryOp) : ?string
     {
-        $nodeClass = \get_class($binaryOp);
+        $nodeClass = $binaryOp::class;
         return self::BINARY_OP_TO_INVERSE_CLASSES[$nodeClass] ?? null;
     }
     public function getTruthyExpr(Expr $expr) : Expr

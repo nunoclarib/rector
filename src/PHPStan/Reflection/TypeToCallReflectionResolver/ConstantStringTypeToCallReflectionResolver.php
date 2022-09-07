@@ -35,14 +35,13 @@ final class ConstantStringTypeToCallReflectionResolver implements TypeToCallRefl
      * @var string
      */
     private const METHOD_KEY = 'method';
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    public function __construct(ReflectionProvider $reflectionProvider)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider
+    )
     {
-        $this->reflectionProvider = $reflectionProvider;
     }
     public function supports(Type $type) : bool
     {

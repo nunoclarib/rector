@@ -11,22 +11,19 @@ use RectorPrefix202209\Symfony\Component\Console\Command\Command;
 final class MissingRectorRulesReporter
 {
     /**
-     * @var RectorInterface[]
-     * @readonly
-     */
-    private $rectors;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    /**
      * @param RectorInterface[] $rectors
      */
-    public function __construct(array $rectors, OutputStyleInterface $rectorOutputStyle)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private array $rectors,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle
+    )
     {
-        $this->rectors = $rectors;
-        $this->rectorOutputStyle = $rectorOutputStyle;
     }
     public function reportIfMissing() : ?int
     {

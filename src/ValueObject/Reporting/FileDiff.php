@@ -21,34 +21,22 @@ final class FileDiff implements SerializableInterface
      */
     private const FIRST_LINE_KEY = 'first_line';
     /**
-     * @readonly
-     * @var string
-     */
-    private $relativeFilePath;
-    /**
-     * @readonly
-     * @var string
-     */
-    private $diff;
-    /**
-     * @readonly
-     * @var string
-     */
-    private $diffConsoleFormatted;
-    /**
-     * @var RectorWithLineChange[]
-     * @readonly
-     */
-    private $rectorsWithLineChanges = [];
-    /**
      * @param RectorWithLineChange[] $rectorsWithLineChanges
      */
-    public function __construct(string $relativeFilePath, string $diff, string $diffConsoleFormatted, array $rectorsWithLineChanges = [])
+    public function __construct(/**
+     * @readonly
+     */
+    private string $relativeFilePath, /**
+     * @readonly
+     */
+    private string $diff, /**
+     * @readonly
+     */
+    private string $diffConsoleFormatted, /**
+     * @readonly
+     */
+    private array $rectorsWithLineChanges = [])
     {
-        $this->relativeFilePath = $relativeFilePath;
-        $this->diff = $diff;
-        $this->diffConsoleFormatted = $diffConsoleFormatted;
-        $this->rectorsWithLineChanges = $rectorsWithLineChanges;
         Assert::allIsAOf($rectorsWithLineChanges, RectorWithLineChange::class);
     }
     public function getDiff() : string

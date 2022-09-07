@@ -12,26 +12,21 @@ use Rector\NodeTypeResolver\Reflection\BetterReflection\SourceLocatorProvider\Dy
  */
 final class DynamicSourceLocatorDecorator
 {
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\Reflection\BetterReflection\SourceLocatorProvider\DynamicSourceLocatorProvider
-     */
-    private $dynamicSourceLocatorProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\PhpFilesFinder
-     */
-    private $phpFilesFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\FileAndDirectoryFilter
-     */
-    private $fileAndDirectoryFilter;
-    public function __construct(DynamicSourceLocatorProvider $dynamicSourceLocatorProvider, PhpFilesFinder $phpFilesFinder, FileAndDirectoryFilter $fileAndDirectoryFilter)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private DynamicSourceLocatorProvider $dynamicSourceLocatorProvider,
+        /**
+         * @readonly
+         */
+        private PhpFilesFinder $phpFilesFinder,
+        /**
+         * @readonly
+         */
+        private FileAndDirectoryFilter $fileAndDirectoryFilter
+    )
     {
-        $this->dynamicSourceLocatorProvider = $dynamicSourceLocatorProvider;
-        $this->phpFilesFinder = $phpFilesFinder;
-        $this->fileAndDirectoryFilter = $fileAndDirectoryFilter;
     }
     /**
      * @param string[] $paths

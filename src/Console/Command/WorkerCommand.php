@@ -23,20 +23,14 @@ use RectorPrefix202209\Symplify\EasyParallel\Enum\ReactCommand;
  */
 final class WorkerCommand extends \Rector\Core\Console\Command\AbstractProcessCommand
 {
-    /**
+    public function __construct(/**
      * @readonly
-     * @var \Rector\Parallel\WorkerRunner
      */
-    private $workerRunner;
-    /**
+    private WorkerRunner $workerRunner, /**
      * @readonly
-     * @var \Rector\Core\Util\MemoryLimiter
      */
-    private $memoryLimiter;
-    public function __construct(WorkerRunner $workerRunner, MemoryLimiter $memoryLimiter)
+    private MemoryLimiter $memoryLimiter)
     {
-        $this->workerRunner = $workerRunner;
-        $this->memoryLimiter = $memoryLimiter;
         parent::__construct();
     }
     protected function configure() : void

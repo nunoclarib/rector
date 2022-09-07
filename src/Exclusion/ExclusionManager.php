@@ -25,14 +25,13 @@ final class ExclusionManager
      * @see https://regex101.com/r/DKW6RE/1
      */
     private const NO_RECTOR_START_REGEX = '#@noRector$#';
-    /**
-     * @readonly
-     * @var \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory
-     */
-    private $phpDocInfoFactory;
-    public function __construct(PhpDocInfoFactory $phpDocInfoFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private PhpDocInfoFactory $phpDocInfoFactory
+    )
     {
-        $this->phpDocInfoFactory = $phpDocInfoFactory;
     }
     /**
      * @param class-string<PhpRectorInterface> $rectorClass

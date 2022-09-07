@@ -20,26 +20,22 @@ final class ClassInsertManipulator
      * @var array<class-string<Stmt>>
      */
     private const BEFORE_TRAIT_TYPES = [TraitUse::class, Property::class, ClassMethod::class];
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\NodeFactory
-     */
-    private $nodeFactory;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    public function __construct(NodeFactory $nodeFactory, NodeNameResolver $nodeNameResolver)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeFactory $nodeFactory,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver
+    )
     {
-        $this->nodeFactory = $nodeFactory;
-        $this->nodeNameResolver = $nodeNameResolver;
     }
     /**
      * @api
-     * @param \PhpParser\Node\Stmt\Property|\PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod $stmt
      */
-    public function addAsFirstMethod(Class_ $class, $stmt) : void
+    public function addAsFirstMethod(Class_ $class, \PhpParser\Node\Stmt\Property|\PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod $stmt) : void
     {
         if ($this->isSuccessToInsertBeforeFirstMethod($class, $stmt)) {
             return;
@@ -100,10 +96,7 @@ final class ClassInsertManipulator
         \array_splice($stmts, $key, 0, [$stmt]);
         return $stmts;
     }
-    /**
-     * @param \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod|\PhpParser\Node\Stmt\Property $stmt
-     */
-    private function isSuccessToInsertBeforeFirstMethod(Class_ $class, $stmt) : bool
+    private function isSuccessToInsertBeforeFirstMethod(Class_ $class, \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod|\PhpParser\Node\Stmt\Property $stmt) : bool
     {
         foreach ($class->stmts as $key => $classStmt) {
             if (!$classStmt instanceof ClassMethod) {
@@ -114,10 +107,7 @@ final class ClassInsertManipulator
         }
         return \false;
     }
-    /**
-     * @param \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod|\PhpParser\Node\Stmt\Property $stmt
-     */
-    private function isSuccessToInsertAfterLastProperty(Class_ $class, $stmt) : bool
+    private function isSuccessToInsertAfterLastProperty(Class_ $class, \PhpParser\Node\Stmt\ClassConst|\PhpParser\Node\Stmt\ClassMethod|\PhpParser\Node\Stmt\Property $stmt) : bool
     {
         $previousElement = null;
         foreach ($class->stmts as $key => $classStmt) {

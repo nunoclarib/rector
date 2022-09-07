@@ -14,22 +14,19 @@ final class RectorNodeTraverser extends NodeTraverser
      */
     private $areNodeVisitorsPrepared = \false;
     /**
-     * @var PhpRectorInterface[]
-     * @readonly
-     */
-    private $phpRectors;
-    /**
-     * @readonly
-     * @var \Rector\VersionBonding\PhpVersionedFilter
-     */
-    private $phpVersionedFilter;
-    /**
      * @param PhpRectorInterface[] $phpRectors
      */
-    public function __construct(array $phpRectors, PhpVersionedFilter $phpVersionedFilter)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private array $phpRectors,
+        /**
+         * @readonly
+         */
+        private PhpVersionedFilter $phpVersionedFilter
+    )
     {
-        $this->phpRectors = $phpRectors;
-        $this->phpVersionedFilter = $phpVersionedFilter;
     }
     /**
      * @template TNode as Node

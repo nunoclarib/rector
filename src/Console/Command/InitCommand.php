@@ -19,32 +19,20 @@ final class InitCommand extends Command
      * @var string
      */
     private const TEMPLATE_PATH = __DIR__ . '/../../../templates/rector.php.dist';
-    /**
+    public function __construct(/**
      * @readonly
-     * @var \Symfony\Component\Filesystem\Filesystem
      */
-    private $filesystem;
-    /**
+    private \RectorPrefix202209\Symfony\Component\Filesystem\Filesystem $filesystem, /**
      * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
      */
-    private $rectorOutputStyle;
-    /**
+    private OutputStyleInterface $rectorOutputStyle, /**
      * @readonly
-     * @var \Rector\Core\Php\PhpVersionProvider
      */
-    private $phpVersionProvider;
-    /**
+    private PhpVersionProvider $phpVersionProvider, /**
      * @readonly
-     * @var \Symfony\Component\Console\Style\SymfonyStyle
      */
-    private $symfonyStyle;
-    public function __construct(\RectorPrefix202209\Symfony\Component\Filesystem\Filesystem $filesystem, OutputStyleInterface $rectorOutputStyle, PhpVersionProvider $phpVersionProvider, SymfonyStyle $symfonyStyle)
+    private SymfonyStyle $symfonyStyle)
     {
-        $this->filesystem = $filesystem;
-        $this->rectorOutputStyle = $rectorOutputStyle;
-        $this->phpVersionProvider = $phpVersionProvider;
-        $this->symfonyStyle = $symfonyStyle;
         parent::__construct();
     }
     protected function configure() : void

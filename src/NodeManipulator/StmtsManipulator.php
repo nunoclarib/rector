@@ -11,20 +11,17 @@ use Rector\Core\PhpParser\Comparing\NodeComparator;
 use Rector\PhpDocParser\NodeTraverser\SimpleCallableNodeTraverser;
 final class StmtsManipulator
 {
-    /**
-     * @readonly
-     * @var \Rector\PhpDocParser\NodeTraverser\SimpleCallableNodeTraverser
-     */
-    private $simpleCallableNodeTraverser;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    public function __construct(SimpleCallableNodeTraverser $simpleCallableNodeTraverser, NodeComparator $nodeComparator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private SimpleCallableNodeTraverser $simpleCallableNodeTraverser,
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator
+    )
     {
-        $this->simpleCallableNodeTraverser = $simpleCallableNodeTraverser;
-        $this->nodeComparator = $nodeComparator;
     }
     /**
      * @param Stmt[] $stmts

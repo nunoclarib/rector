@@ -21,14 +21,13 @@ final class RectifiedAnalyzer
      * @var array<string, RectifiedNode|null>
      */
     private $previousFileWithNodes = [];
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    public function __construct(NodeComparator $nodeComparator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator
+    )
     {
-        $this->nodeComparator = $nodeComparator;
     }
     /**
      * @param class-string<RectorInterface> $rectorClass

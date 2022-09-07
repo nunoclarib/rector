@@ -12,20 +12,17 @@ use Rector\Core\Util\PhpVersionFactory;
  */
 final class ProjectComposerJsonPhpVersionResolver
 {
-    /**
-     * @readonly
-     * @var \Composer\Semver\VersionParser
-     */
-    private $versionParser;
-    /**
-     * @readonly
-     * @var \Rector\Core\Util\PhpVersionFactory
-     */
-    private $phpVersionFactory;
-    public function __construct(VersionParser $versionParser, PhpVersionFactory $phpVersionFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private VersionParser $versionParser,
+        /**
+         * @readonly
+         */
+        private PhpVersionFactory $phpVersionFactory
+    )
     {
-        $this->versionParser = $versionParser;
-        $this->phpVersionFactory = $phpVersionFactory;
     }
     public function resolve(string $composerJson) : ?int
     {

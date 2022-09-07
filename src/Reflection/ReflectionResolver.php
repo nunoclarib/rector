@@ -38,44 +38,33 @@ final class ReflectionResolver
      * @var \Rector\Core\PhpParser\AstResolver
      */
     private $astResolver;
-    /**
-     * @readonly
-     * @var \PHPStan\Reflection\ReflectionProvider
-     */
-    private $reflectionProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\NodeTypeResolver\NodeTypeResolver
-     */
-    private $nodeTypeResolver;
-    /**
-     * @readonly
-     * @var \Rector\NodeNameResolver\NodeNameResolver
-     */
-    private $nodeNameResolver;
-    /**
-     * @readonly
-     * @var \Rector\Core\PHPStan\Reflection\TypeToCallReflectionResolver\TypeToCallReflectionResolverRegistry
-     */
-    private $typeToCallReflectionResolverRegistry;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeAnalyzer\ClassAnalyzer
-     */
-    private $classAnalyzer;
-    public function __construct(ReflectionProvider $reflectionProvider, BetterNodeFinder $betterNodeFinder, NodeTypeResolver $nodeTypeResolver, NodeNameResolver $nodeNameResolver, TypeToCallReflectionResolverRegistry $typeToCallReflectionResolverRegistry, ClassAnalyzer $classAnalyzer)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ReflectionProvider $reflectionProvider,
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeTypeResolver $nodeTypeResolver,
+        /**
+         * @readonly
+         */
+        private NodeNameResolver $nodeNameResolver,
+        /**
+         * @readonly
+         */
+        private TypeToCallReflectionResolverRegistry $typeToCallReflectionResolverRegistry,
+        /**
+         * @readonly
+         */
+        private ClassAnalyzer $classAnalyzer
+    )
     {
-        $this->reflectionProvider = $reflectionProvider;
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeTypeResolver = $nodeTypeResolver;
-        $this->nodeNameResolver = $nodeNameResolver;
-        $this->typeToCallReflectionResolverRegistry = $typeToCallReflectionResolverRegistry;
-        $this->classAnalyzer = $classAnalyzer;
     }
     /**
      * @required
@@ -110,10 +99,7 @@ final class ReflectionResolver
         }
         return $scope->getClassReflection();
     }
-    /**
-     * @param \PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticCall|\PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $node
-     */
-    public function resolveClassReflectionSourceObject($node) : ?ClassReflection
+    public function resolveClassReflectionSourceObject(\PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticCall|\PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $node) : ?ClassReflection
     {
         if ($node instanceof PropertyFetch || $node instanceof StaticPropertyFetch) {
             $objectType = $node instanceof PropertyFetch ? $this->nodeTypeResolver->getType($node->var) : $this->nodeTypeResolver->getType($node->class);
@@ -180,10 +166,9 @@ final class ReflectionResolver
         return $this->resolveMethodReflection($callerType->getClassName(), $methodName, $scope);
     }
     /**
-     * @param \PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall $call
      * @return \PHPStan\Reflection\MethodReflection|\PHPStan\Reflection\FunctionReflection|null
      */
-    public function resolveFunctionLikeReflectionFromCall($call)
+    public function resolveFunctionLikeReflectionFromCall(\PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\FuncCall|\PhpParser\Node\Expr\StaticCall $call)
     {
         if ($call instanceof MethodCall) {
             return $this->resolveMethodReflectionFromMethodCall($call);
@@ -216,10 +201,7 @@ final class ReflectionResolver
         $scope = $new->getAttribute(AttributeKey::SCOPE);
         return $this->resolveMethodReflection($newClassType->getClassName(), MethodName::CONSTRUCT, $scope);
     }
-    /**
-     * @param \PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $propertyFetch
-     */
-    public function resolvePropertyReflectionFromPropertyFetch($propertyFetch) : ?PhpPropertyReflection
+    public function resolvePropertyReflectionFromPropertyFetch(\PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\StaticPropertyFetch $propertyFetch) : ?PhpPropertyReflection
     {
         $fetcheeType = $propertyFetch instanceof PropertyFetch ? $this->nodeTypeResolver->getType($propertyFetch->var) : $this->nodeTypeResolver->getType($propertyFetch->class);
         if (!$fetcheeType instanceof TypeWithClassName) {

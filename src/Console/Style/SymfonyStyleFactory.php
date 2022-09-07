@@ -11,14 +11,13 @@ use RectorPrefix202209\Symfony\Component\Console\Output\OutputInterface;
 use RectorPrefix202209\Symfony\Component\Console\Style\SymfonyStyle;
 final class SymfonyStyleFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Util\Reflection\PrivatesAccessor
-     */
-    private $privatesAccessor;
-    public function __construct(PrivatesAccessor $privatesAccessor)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private PrivatesAccessor $privatesAccessor
+    )
     {
-        $this->privatesAccessor = $privatesAccessor;
     }
     public function create() : SymfonyStyle
     {

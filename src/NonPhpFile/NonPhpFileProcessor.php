@@ -15,22 +15,19 @@ use Rector\Parallel\ValueObject\Bridge;
 final class NonPhpFileProcessor implements FileProcessorInterface
 {
     /**
-     * @var NonPhpRectorInterface[]
-     * @readonly
-     */
-    private $nonPhpRectors;
-    /**
-     * @readonly
-     * @var \Rector\ChangesReporting\ValueObjectFactory\FileDiffFactory
-     */
-    private $fileDiffFactory;
-    /**
      * @param NonPhpRectorInterface[] $nonPhpRectors
      */
-    public function __construct(array $nonPhpRectors, FileDiffFactory $fileDiffFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private array $nonPhpRectors,
+        /**
+         * @readonly
+         */
+        private FileDiffFactory $fileDiffFactory
+    )
     {
-        $this->nonPhpRectors = $nonPhpRectors;
-        $this->fileDiffFactory = $fileDiffFactory;
     }
     /**
      * @return array{system_errors: SystemError[], file_diffs: FileDiff[]}
@@ -63,7 +60,7 @@ final class NonPhpFileProcessor implements FileProcessorInterface
         $filePath = $file->getFilePath();
         // bug in path extension
         foreach ($this->getSupportedFileExtensions() as $fileExtension) {
-            if (\substr_compare($filePath, '.' . $fileExtension, -\strlen('.' . $fileExtension)) === 0) {
+            if (str_ends_with($filePath, '.' . $fileExtension)) {
                 return \true;
             }
         }

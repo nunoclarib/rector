@@ -11,14 +11,13 @@ use Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 final class FileWithoutNamespaceNodeTraverser extends NodeTraverser
 {
-    /**
-     * @readonly
-     * @var \PhpParser\NodeFinder
-     */
-    private $nodeFinder;
-    public function __construct(NodeFinder $nodeFinder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodeFinder $nodeFinder
+    )
     {
-        $this->nodeFinder = $nodeFinder;
     }
     /**
      * @template TNode as Node

@@ -8,20 +8,17 @@ use Rector\FileSystemRector\Contract\FileWithNodesInterface;
 use Rector\PostRector\Application\PostFileProcessor;
 final class NodesWithFileDestinationPrinter
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\PhpParser\NodePrinterInterface
-     */
-    private $nodePrinter;
-    /**
-     * @readonly
-     * @var \Rector\PostRector\Application\PostFileProcessor
-     */
-    private $postFileProcessor;
-    public function __construct(NodePrinterInterface $nodePrinter, PostFileProcessor $postFileProcessor)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private NodePrinterInterface $nodePrinter,
+        /**
+         * @readonly
+         */
+        private PostFileProcessor $postFileProcessor
+    )
     {
-        $this->nodePrinter = $nodePrinter;
-        $this->postFileProcessor = $postFileProcessor;
     }
     public function printNodesWithFileDestination(FileWithNodesInterface $fileWithNodes) : string
     {

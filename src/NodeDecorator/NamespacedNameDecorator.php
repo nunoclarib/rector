@@ -11,7 +11,7 @@ final class NamespacedNameDecorator
     /**
      * @param \PhpParser\Node|mixed[] $node
      */
-    public function decorate($node) : void
+    public function decorate(\PhpParser\Node|array $node) : void
     {
         $nodes = \is_array($node) ? $node : [$node];
         // traverse with node name resolver, to to comply with PHPStan default parser

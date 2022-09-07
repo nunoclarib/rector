@@ -8,14 +8,13 @@ use PhpParser\Node\Expr\FuncCall;
 use Rector\Core\PhpParser\Node\Value\ValueResolver;
 final class FuncCallManipulator
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\Value\ValueResolver
-     */
-    private $valueResolver;
-    public function __construct(ValueResolver $valueResolver)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ValueResolver $valueResolver
+    )
     {
-        $this->valueResolver = $valueResolver;
     }
     /**
      * @param FuncCall[] $compactFuncCalls

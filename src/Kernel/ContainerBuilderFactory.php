@@ -9,14 +9,13 @@ use RectorPrefix202209\Symfony\Component\DependencyInjection\ContainerBuilder;
 use RectorPrefix202209\Webmozart\Assert\Assert;
 final class ContainerBuilderFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Config\Loader\ConfigureCallMergingLoaderFactory
-     */
-    private $configureCallMergingLoaderFactory;
-    public function __construct(ConfigureCallMergingLoaderFactory $configureCallMergingLoaderFactory)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ConfigureCallMergingLoaderFactory $configureCallMergingLoaderFactory
+    )
     {
-        $this->configureCallMergingLoaderFactory = $configureCallMergingLoaderFactory;
     }
     /**
      * @param string[] $configFiles

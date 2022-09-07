@@ -8,20 +8,17 @@ use Rector\Core\Contract\Rector\ConfigurableRectorInterface;
 use Rector\Core\Validation\Collector\EmptyConfigurableRectorCollector;
 final class EmptyConfigurableRectorChecker
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Validation\Collector\EmptyConfigurableRectorCollector
-     */
-    private $emptyConfigurableRectorCollector;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    public function __construct(EmptyConfigurableRectorCollector $emptyConfigurableRectorCollector, OutputStyleInterface $rectorOutputStyle)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private EmptyConfigurableRectorCollector $emptyConfigurableRectorCollector,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle
+    )
     {
-        $this->emptyConfigurableRectorCollector = $emptyConfigurableRectorCollector;
-        $this->rectorOutputStyle = $rectorOutputStyle;
     }
     public function check() : void
     {

@@ -198,7 +198,7 @@ CODE_SAMPLE;
      */
     public final function enterNode(Node $node)
     {
-        $nodeClass = \get_class($node);
+        $nodeClass = $node::class;
         if (!$this->isMatchingNodeType($nodeClass)) {
             return null;
         }
@@ -222,7 +222,7 @@ CODE_SAMPLE;
         $originalNode = $node->getAttribute(AttributeKey::ORIGINAL_NODE) ?? $node;
         /** @var Node[]|Node $refactoredNode */
         $this->createdByRuleDecorator->decorate($refactoredNode, $originalNode, static::class);
-        $rectorWithLineChange = new RectorWithLineChange(\get_class($this), $originalNode->getLine());
+        $rectorWithLineChange = new RectorWithLineChange($this::class, $originalNode->getLine());
         $this->file->addRectorClassWithLine($rectorWithLineChange);
         if (\is_array($refactoredNode)) {
             $originalNodeHash = \spl_object_hash($originalNode);
@@ -242,7 +242,7 @@ CODE_SAMPLE;
         $currentScope = $originalNode->getAttribute(AttributeKey::SCOPE);
         $this->changedNodeScopeRefresher->refresh($refactoredNode, $currentScope, $this->file->getFilePath());
         // is equals node type? return node early
-        if (\get_class($originalNode) === \get_class($refactoredNode)) {
+        if ($originalNode::class === $refactoredNode::class) {
             return $refactoredNode;
         }
         // search "infinite recursion" in https://github.com/nikic/PHP-Parser/blob/master/doc/component/Walking_the_AST.markdown
@@ -291,7 +291,7 @@ CODE_SAMPLE;
      * @param \PhpParser\Node|mixed[] $nodes
      * @param callable(Node $node): (Node|null|int) $callable
      */
-    protected function traverseNodesWithCallable($nodes, callable $callable) : void
+    protected function traverseNodesWithCallable(\PhpParser\Node|array $nodes, callable $callable) : void
     {
         $this->simpleCallableNodeTraverser->traverseNodesWithCallable($nodes, $callable);
     }

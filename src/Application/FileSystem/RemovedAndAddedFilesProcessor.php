@@ -13,38 +13,29 @@ use RectorPrefix202209\Symfony\Component\Filesystem\Filesystem;
  */
 final class RemovedAndAddedFilesProcessor
 {
-    /**
-     * @readonly
-     * @var \Symfony\Component\Filesystem\Filesystem
-     */
-    private $filesystem;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Printer\NodesWithFileDestinationPrinter
-     */
-    private $nodesWithFileDestinationPrinter;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector
-     */
-    private $removedAndAddedFilesCollector;
-    /**
-     * @readonly
-     * @var \Rector\Core\Contract\Console\OutputStyleInterface
-     */
-    private $rectorOutputStyle;
-    /**
-     * @readonly
-     * @var \Rector\Core\FileSystem\FilePathHelper
-     */
-    private $filePathHelper;
-    public function __construct(Filesystem $filesystem, NodesWithFileDestinationPrinter $nodesWithFileDestinationPrinter, \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector, OutputStyleInterface $rectorOutputStyle, FilePathHelper $filePathHelper)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private Filesystem $filesystem,
+        /**
+         * @readonly
+         */
+        private NodesWithFileDestinationPrinter $nodesWithFileDestinationPrinter,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        /**
+         * @readonly
+         */
+        private OutputStyleInterface $rectorOutputStyle,
+        /**
+         * @readonly
+         */
+        private FilePathHelper $filePathHelper
+    )
     {
-        $this->filesystem = $filesystem;
-        $this->nodesWithFileDestinationPrinter = $nodesWithFileDestinationPrinter;
-        $this->removedAndAddedFilesCollector = $removedAndAddedFilesCollector;
-        $this->rectorOutputStyle = $rectorOutputStyle;
-        $this->filePathHelper = $filePathHelper;
     }
     public function run(Configuration $configuration) : void
     {

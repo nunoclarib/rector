@@ -12,20 +12,17 @@ use Rector\Parallel\ValueObject\Bridge;
 use Rector\PostRector\Collector\NodesToRemoveCollector;
 final class ProcessResultFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector
-     */
-    private $removedAndAddedFilesCollector;
-    /**
-     * @readonly
-     * @var \Rector\PostRector\Collector\NodesToRemoveCollector
-     */
-    private $nodesToRemoveCollector;
-    public function __construct(RemovedAndAddedFilesCollector $removedAndAddedFilesCollector, NodesToRemoveCollector $nodesToRemoveCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector,
+        /**
+         * @readonly
+         */
+        private NodesToRemoveCollector $nodesToRemoveCollector
+    )
     {
-        $this->removedAndAddedFilesCollector = $removedAndAddedFilesCollector;
-        $this->nodesToRemoveCollector = $nodesToRemoveCollector;
     }
     /**
      * @param array{system_errors: SystemError[], file_diffs: FileDiff[]} $errorsAndFileDiffs

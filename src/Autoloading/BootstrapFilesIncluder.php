@@ -13,14 +13,13 @@ use Throwable;
 use RectorPrefix202209\Webmozart\Assert\Assert;
 final class BootstrapFilesIncluder
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\Parameter\ParameterProvider
-     */
-    private $parameterProvider;
-    public function __construct(ParameterProvider $parameterProvider)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ParameterProvider $parameterProvider
+    )
     {
-        $this->parameterProvider = $parameterProvider;
     }
     /**
      * Inspired by
@@ -38,7 +37,7 @@ final class BootstrapFilesIncluder
             try {
                 require_once $bootstrapFile;
             } catch (Throwable $throwable) {
-                $errorMessage = \sprintf('"%s" thrown in "%s" on line %d while loading bootstrap file %s: %s', \get_class($throwable), $throwable->getFile(), $throwable->getLine(), $bootstrapFile, $throwable->getMessage());
+                $errorMessage = \sprintf('"%s" thrown in "%s" on line %d while loading bootstrap file %s: %s', $throwable::class, $throwable->getFile(), $throwable->getLine(), $bootstrapFile, $throwable->getMessage());
                 throw new ShouldNotHappenException($errorMessage, $throwable->getCode(), $throwable);
             }
         }

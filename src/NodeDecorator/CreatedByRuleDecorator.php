@@ -10,13 +10,13 @@ final class CreatedByRuleDecorator
     /**
      * @param mixed[]|\PhpParser\Node $node
      */
-    public function decorate($node, Node $originalNode, string $rectorClass) : void
+    public function decorate(array|\PhpParser\Node $node, Node $originalNode, string $rectorClass) : void
     {
         if ($node instanceof Node) {
             $node = [$node];
         }
         foreach ($node as $singleNode) {
-            if (\get_class($singleNode) === \get_class($originalNode)) {
+            if ($singleNode::class === $originalNode::class) {
                 $this->createByRule($singleNode, $rectorClass);
             }
         }

@@ -71,22 +71,16 @@ final class BetterStandardPrinter extends Standard implements NodePrinterInterfa
      */
     private $tabOrSpaceIndentCharacter = ' ';
     /**
-     * @readonly
-     * @var \Rector\Comments\NodeDocBlock\DocBlockUpdater
-     */
-    private $docBlockUpdater;
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\RectorConfigProvider
-     */
-    private $rectorConfigProvider;
-    /**
      * @param mixed[] $options
      */
-    public function __construct(DocBlockUpdater $docBlockUpdater, RectorConfigProvider $rectorConfigProvider, array $options = [])
+    public function __construct(/**
+     * @readonly
+     */
+    private DocBlockUpdater $docBlockUpdater, /**
+     * @readonly
+     */
+    private RectorConfigProvider $rectorConfigProvider, array $options = [])
     {
-        $this->docBlockUpdater = $docBlockUpdater;
-        $this->rectorConfigProvider = $rectorConfigProvider;
         parent::__construct($options);
         // print return type double colon right after the bracket "function(): string"
         $this->initializeInsertionMap();
@@ -388,19 +382,15 @@ final class BetterStandardPrinter extends Standard implements NodePrinterInterfa
     /**
      * Invoke re-print even if only raw value was changed.
      * That allows PHPStan to use int strict types, while changing the value with literal "_"
-     * @return string|int
      */
-    protected function pScalar_LNumber(LNumber $lNumber)
+    protected function pScalar_LNumber(LNumber $lNumber): string|int
     {
         if ($this->shouldPrintNewRawValue($lNumber)) {
             return (string) $lNumber->getAttribute(AttributeKey::RAW_VALUE);
         }
         return parent::pScalar_LNumber($lNumber);
     }
-    /**
-     * @param \PhpParser\Node\Scalar\LNumber|\PhpParser\Node\Scalar\DNumber $lNumber
-     */
-    private function shouldPrintNewRawValue($lNumber) : bool
+    private function shouldPrintNewRawValue(\PhpParser\Node\Scalar\LNumber|\PhpParser\Node\Scalar\DNumber $lNumber) : bool
     {
         return $lNumber->getAttribute(AttributeKey::REPRINT_RAW_VALUE) === \true;
     }

@@ -13,14 +13,13 @@ use RectorPrefix202209\Symfony\Component\Config\Loader\LoaderResolver;
 use RectorPrefix202209\Symfony\Component\DependencyInjection\ContainerBuilder;
 final class ConfigureCallMergingLoaderFactory
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\DependencyInjection\Collector\ConfigureCallValuesCollector
-     */
-    private $configureCallValuesCollector;
-    public function __construct(ConfigureCallValuesCollector $configureCallValuesCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ConfigureCallValuesCollector $configureCallValuesCollector
+    )
     {
-        $this->configureCallValuesCollector = $configureCallValuesCollector;
     }
     public function create(ContainerBuilder $containerBuilder, string $currentWorkingDirectory) : LoaderInterface
     {

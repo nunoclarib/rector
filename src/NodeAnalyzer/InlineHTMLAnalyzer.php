@@ -9,14 +9,13 @@ use PhpParser\Node\Stmt\InlineHTML;
 use Rector\Core\PhpParser\Node\BetterNodeFinder;
 final class InlineHTMLAnalyzer
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    public function __construct(BetterNodeFinder $betterNodeFinder)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
     }
     public function hasInlineHTML(Node $node) : bool
     {

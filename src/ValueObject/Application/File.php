@@ -41,19 +41,11 @@ final class File
      * @var RectorWithLineChange[]
      */
     private $rectorWithLineChanges = [];
-    /**
+    public function __construct(/**
      * @readonly
-     * @var string
      */
-    private $filepath;
-    /**
-     * @var string
-     */
-    private $fileContent;
-    public function __construct(string $filepath, string $fileContent)
+    private string $filepath, private string $fileContent)
     {
-        $this->filepath = $filepath;
-        $this->fileContent = $fileContent;
         $this->originalFileContent = $fileContent;
     }
     public function getFilePath() : string

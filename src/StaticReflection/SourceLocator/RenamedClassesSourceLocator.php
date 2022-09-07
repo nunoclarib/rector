@@ -18,14 +18,13 @@ use Rector\Core\Configuration\RenamedClassesDataCollector;
  */
 final class RenamedClassesSourceLocator implements SourceLocator
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\RenamedClassesDataCollector
-     */
-    private $renamedClassesDataCollector;
-    public function __construct(RenamedClassesDataCollector $renamedClassesDataCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private RenamedClassesDataCollector $renamedClassesDataCollector
+    )
     {
-        $this->renamedClassesDataCollector = $renamedClassesDataCollector;
     }
     public function locateIdentifier(Reflector $reflector, Identifier $identifier) : ?Reflection
     {

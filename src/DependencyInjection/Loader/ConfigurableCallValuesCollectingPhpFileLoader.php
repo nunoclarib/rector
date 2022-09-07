@@ -13,14 +13,11 @@ use RectorPrefix202209\Symfony\Component\DependencyInjection\Loader\PhpFileLoade
  */
 final class ConfigurableCallValuesCollectingPhpFileLoader extends PhpFileLoader
 {
-    /**
+    public function __construct(ContainerBuilder $containerBuilder, FileLocatorInterface $fileLocator, /**
      * @readonly
-     * @var \Rector\Core\DependencyInjection\Collector\ConfigureCallValuesCollector
      */
-    private $configureCallValuesCollector;
-    public function __construct(ContainerBuilder $containerBuilder, FileLocatorInterface $fileLocator, ConfigureCallValuesCollector $configureCallValuesCollector)
+    private ConfigureCallValuesCollector $configureCallValuesCollector)
     {
-        $this->configureCallValuesCollector = $configureCallValuesCollector;
         parent::__construct($containerBuilder, $fileLocator);
     }
     /**

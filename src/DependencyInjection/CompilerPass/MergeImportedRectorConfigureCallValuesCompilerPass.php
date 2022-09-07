@@ -13,14 +13,13 @@ final class MergeImportedRectorConfigureCallValuesCompilerPass implements Compil
      * @var string
      */
     private const CONFIGURE_METHOD_NAME = 'configure';
-    /**
-     * @readonly
-     * @var \Rector\Core\DependencyInjection\Collector\ConfigureCallValuesCollector
-     */
-    private $configureCallValuesCollector;
-    public function __construct(ConfigureCallValuesCollector $configureCallValuesCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private ConfigureCallValuesCollector $configureCallValuesCollector
+    )
     {
-        $this->configureCallValuesCollector = $configureCallValuesCollector;
     }
     public function process(ContainerBuilder $containerBuilder) : void
     {

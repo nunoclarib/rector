@@ -19,31 +19,23 @@ use Rector\FileSystemRector\ValueObject\AddedFileWithContent;
  */
 final class NeighbourClassLikePrinter
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Printer\BetterStandardPrinter
-     */
-    private $betterStandardPrinter;
-    /**
-     * @readonly
-     * @var \Rector\Core\Application\FileSystem\RemovedAndAddedFilesCollector
-     */
-    private $removedAndAddedFilesCollector;
-    public function __construct(BetterNodeFinder $betterNodeFinder, \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter, RemovedAndAddedFilesCollector $removedAndAddedFilesCollector)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private \Rector\Core\PhpParser\Printer\BetterStandardPrinter $betterStandardPrinter,
+        /**
+         * @readonly
+         */
+        private RemovedAndAddedFilesCollector $removedAndAddedFilesCollector
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->betterStandardPrinter = $betterStandardPrinter;
-        $this->removedAndAddedFilesCollector = $removedAndAddedFilesCollector;
     }
-    /**
-     * @param \PhpParser\Node\Stmt\Namespace_|\Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace $mainNode
-     */
-    public function printClassLike(ClassLike $classLike, $mainNode, string $filePath, ?File $file = null) : void
+    public function printClassLike(ClassLike $classLike, \PhpParser\Node\Stmt\Namespace_|\Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace $mainNode, string $filePath, ?File $file = null) : void
     {
         $declares = $this->resolveDeclares($mainNode);
         if ($mainNode instanceof FileWithoutNamespace) {
@@ -65,9 +57,8 @@ final class NeighbourClassLikePrinter
     }
     /**
      * @return Declare_[]
-     * @param \Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace|\PhpParser\Node\Stmt\Namespace_ $mainNode
      */
-    private function resolveDeclares($mainNode) : array
+    private function resolveDeclares(\Rector\Core\PhpParser\Node\CustomNode\FileWithoutNamespace|\PhpParser\Node\Stmt\Namespace_ $mainNode) : array
     {
         $node = $this->betterNodeFinder->findFirstPreviousOfTypes($mainNode, [Declare_::class]);
         if ($node instanceof Declare_) {

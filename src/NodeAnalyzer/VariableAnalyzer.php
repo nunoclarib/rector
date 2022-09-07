@@ -15,20 +15,17 @@ use Rector\Core\PhpParser\Node\BetterNodeFinder;
 use Rector\NodeTypeResolver\Node\AttributeKey;
 final class VariableAnalyzer
 {
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Node\BetterNodeFinder
-     */
-    private $betterNodeFinder;
-    /**
-     * @readonly
-     * @var \Rector\Core\PhpParser\Comparing\NodeComparator
-     */
-    private $nodeComparator;
-    public function __construct(BetterNodeFinder $betterNodeFinder, NodeComparator $nodeComparator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BetterNodeFinder $betterNodeFinder,
+        /**
+         * @readonly
+         */
+        private NodeComparator $nodeComparator
+    )
     {
-        $this->betterNodeFinder = $betterNodeFinder;
-        $this->nodeComparator = $nodeComparator;
     }
     public function isStaticOrGlobal(Variable $variable) : bool
     {
@@ -36,7 +33,7 @@ final class VariableAnalyzer
             return \true;
         }
         return (bool) $this->betterNodeFinder->findFirstPrevious($variable, function (Node $node) use($variable) : bool {
-            if (!\in_array(\get_class($node), [Static_::class, Global_::class], \true)) {
+            if (!\in_array($node::class, [Static_::class, Global_::class], \true)) {
                 return \false;
             }
             /**

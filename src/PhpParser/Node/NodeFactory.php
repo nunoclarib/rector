@@ -60,38 +60,29 @@ final class NodeFactory
      * @var string
      */
     private const THIS = 'this';
-    /**
-     * @readonly
-     * @var \PhpParser\BuilderFactory
-     */
-    private $builderFactory;
-    /**
-     * @readonly
-     * @var \Rector\BetterPhpDocParser\PhpDocInfo\PhpDocInfoFactory
-     */
-    private $phpDocInfoFactory;
-    /**
-     * @readonly
-     * @var \Rector\StaticTypeMapper\StaticTypeMapper
-     */
-    private $staticTypeMapper;
-    /**
-     * @readonly
-     * @var \Rector\Core\Configuration\CurrentNodeProvider
-     */
-    private $currentNodeProvider;
-    /**
-     * @readonly
-     * @var \Rector\Core\NodeDecorator\PropertyTypeDecorator
-     */
-    private $propertyTypeDecorator;
-    public function __construct(BuilderFactory $builderFactory, PhpDocInfoFactory $phpDocInfoFactory, StaticTypeMapper $staticTypeMapper, CurrentNodeProvider $currentNodeProvider, PropertyTypeDecorator $propertyTypeDecorator)
+    public function __construct(
+        /**
+         * @readonly
+         */
+        private BuilderFactory $builderFactory,
+        /**
+         * @readonly
+         */
+        private PhpDocInfoFactory $phpDocInfoFactory,
+        /**
+         * @readonly
+         */
+        private StaticTypeMapper $staticTypeMapper,
+        /**
+         * @readonly
+         */
+        private CurrentNodeProvider $currentNodeProvider,
+        /**
+         * @readonly
+         */
+        private PropertyTypeDecorator $propertyTypeDecorator
+    )
     {
-        $this->builderFactory = $builderFactory;
-        $this->phpDocInfoFactory = $phpDocInfoFactory;
-        $this->staticTypeMapper = $staticTypeMapper;
-        $this->currentNodeProvider = $currentNodeProvider;
-        $this->propertyTypeDecorator = $propertyTypeDecorator;
     }
     /**
      * Creates "SomeClass::CONSTANT"
@@ -160,10 +151,7 @@ final class NodeFactory
         $propertyFetch = $this->createPropertyFetch(self::THIS, $propertyName);
         return new Assign($propertyFetch, $expr);
     }
-    /**
-     * @param mixed $argument
-     */
-    public function createArg($argument) : Arg
+    public function createArg(mixed $argument) : Arg
     {
         return new Arg(BuilderHelpers::normalizeValue($argument));
     }
@@ -213,17 +201,13 @@ final class NodeFactory
     }
     /**
      * @param mixed[] $arguments
-     * @param \PhpParser\Node\Expr|string $exprOrVariableName
      */
-    public function createMethodCall($exprOrVariableName, string $method, array $arguments = []) : MethodCall
+    public function createMethodCall(\PhpParser\Node\Expr|string $exprOrVariableName, string $method, array $arguments = []) : MethodCall
     {
         $callerExpr = $this->createMethodCaller($exprOrVariableName);
         return $this->builderFactory->methodCall($callerExpr, $method, $arguments);
     }
-    /**
-     * @param string|\PhpParser\Node\Expr $variableNameOrExpr
-     */
-    public function createPropertyFetch($variableNameOrExpr, string $property) : PropertyFetch
+    public function createPropertyFetch(string|\PhpParser\Node\Expr $variableNameOrExpr, string $property) : PropertyFetch
     {
         $fetcherExpr = \is_string($variableNameOrExpr) ? new Variable($variableNameOrExpr) : $variableNameOrExpr;
         return $this->builderFactory->propertyFetch($fetcherExpr, $property);
@@ -367,9 +351,8 @@ final class NodeFactory
     }
     /**
      * @param string|int|null $key
-     * @param mixed $item
      */
-    private function createArrayItem($item, $key = null) : ArrayItem
+    private function createArrayItem(mixed $item, $key = null) : ArrayItem
     {
         $arrayItem = null;
         if ($item instanceof Variable || $item instanceof MethodCall || $item instanceof StaticCall || $item instanceof FuncCall || $item instanceof Concat || $item instanceof Scalar || $item instanceof Cast || $item instanceof ConstFetch) {
@@ -394,7 +377,7 @@ final class NodeFactory
             $this->decorateArrayItemWithKey($key, $arrayItem);
             return $arrayItem;
         }
-        $nodeClass = \is_object($item) ? \get_class($item) : $item;
+        $nodeClass = \is_object($item) ? $item::class : $item;
         throw new NotImplementedYetException(\sprintf('Not implemented yet. Go to "%s()" and add check for "%s" node.', __METHOD__, (string) $nodeClass));
     }
     /**
@@ -422,20 +405,15 @@ final class NodeFactory
     }
     /**
      * @param string|ObjectReference::* $className
-     * @return \PhpParser\Node\Name|\PhpParser\Node\Name\FullyQualified
      */
-    private function createName(string $className)
+    private function createName(string $className): \PhpParser\Node\Name|\PhpParser\Node\Name\FullyQualified
     {
         if (\in_array($className, [ObjectReference::PARENT, ObjectReference::SELF, ObjectReference::STATIC], \true)) {
             return new Name($className);
         }
         return new FullyQualified($className);
     }
-    /**
-     * @param \PhpParser\Node\Expr|string $exprOrVariableName
-     * @return \PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\Variable|\PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticPropertyFetch|\PhpParser\Node\Expr
-     */
-    private function createMethodCaller($exprOrVariableName)
+    private function createMethodCaller(\PhpParser\Node\Expr|string $exprOrVariableName): \PhpParser\Node\Expr\PropertyFetch|\PhpParser\Node\Expr\Variable|\PhpParser\Node\Expr\MethodCall|\PhpParser\Node\Expr\StaticPropertyFetch|\PhpParser\Node\Expr
     {
         if (\is_string($exprOrVariableName)) {
             return new Variable($exprOrVariableName);
